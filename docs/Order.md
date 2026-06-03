@@ -20,6 +20,7 @@
 | **refundable** | **kotlin.Boolean** | Indicates whether the order is eligible for refund. |  |
 | **businessId** | **kotlin.String** | Business unique ID identifier. |  |
 | **businessName** | **kotlin.String** | Business display title/name. |  |
+| **usdTotal** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Total paid amount converted to USD. |  [optional] |
 | **paidAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) | Payment completion/paid timestamp. |  [optional] |
 | **cardLastFour** | **kotlin.String** | Last four digits of card used. |  [optional] |
 | **cardNetwork** | **kotlin.String** | Card network/brand. |  [optional] |

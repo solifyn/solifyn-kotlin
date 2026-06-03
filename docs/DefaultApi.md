@@ -21,7 +21,7 @@ All URIs are relative to *http://localhost:8000*
 
 <a id="disputeCreatedPost"></a>
 # **disputeCreatedPost**
-> disputeCreatedPost(UNKNOWN_BASE_TYPE)
+> disputeCreatedPost(webhookDisputePayload)
 
 Dispute Created
 
@@ -34,9 +34,9 @@ Occurs when a payment charge is disputed by the customer (chargeback initiated).
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val UNKNOWN_BASE_TYPE : UNKNOWN_BASE_TYPE =  // UNKNOWN_BASE_TYPE | 
+val webhookDisputePayload : WebhookDisputePayload =  // WebhookDisputePayload | 
 try {
-    apiInstance.disputeCreatedPost(UNKNOWN_BASE_TYPE)
+    apiInstance.disputeCreatedPost(webhookDisputePayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#disputeCreatedPost")
     e.printStackTrace()
@@ -49,7 +49,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **UNKNOWN_BASE_TYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] |
+| **webhookDisputePayload** | [**WebhookDisputePayload**](WebhookDisputePayload.md)|  | [optional] |
 
 ### Return type
 
@@ -68,7 +68,7 @@ Configure ApiKeyAuth:
 
 <a id="disputeLostPost"></a>
 # **disputeLostPost**
-> disputeLostPost(UNKNOWN_BASE_TYPE)
+> disputeLostPost(webhookDisputePayload)
 
 Dispute Lost
 
@@ -81,9 +81,9 @@ Occurs when a dispute challenge is lost and the funds are returned to the cardho
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val UNKNOWN_BASE_TYPE : UNKNOWN_BASE_TYPE =  // UNKNOWN_BASE_TYPE | 
+val webhookDisputePayload : WebhookDisputePayload =  // WebhookDisputePayload | 
 try {
-    apiInstance.disputeLostPost(UNKNOWN_BASE_TYPE)
+    apiInstance.disputeLostPost(webhookDisputePayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#disputeLostPost")
     e.printStackTrace()
@@ -96,7 +96,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **UNKNOWN_BASE_TYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] |
+| **webhookDisputePayload** | [**WebhookDisputePayload**](WebhookDisputePayload.md)|  | [optional] |
 
 ### Return type
 
@@ -115,7 +115,7 @@ Configure ApiKeyAuth:
 
 <a id="disputeWonPost"></a>
 # **disputeWonPost**
-> disputeWonPost(UNKNOWN_BASE_TYPE)
+> disputeWonPost(webhookDisputePayload)
 
 Dispute Won
 
@@ -128,9 +128,9 @@ Occurs when a dispute challenge is won by the merchant.
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val UNKNOWN_BASE_TYPE : UNKNOWN_BASE_TYPE =  // UNKNOWN_BASE_TYPE | 
+val webhookDisputePayload : WebhookDisputePayload =  // WebhookDisputePayload | 
 try {
-    apiInstance.disputeWonPost(UNKNOWN_BASE_TYPE)
+    apiInstance.disputeWonPost(webhookDisputePayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#disputeWonPost")
     e.printStackTrace()
@@ -143,7 +143,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **UNKNOWN_BASE_TYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] |
+| **webhookDisputePayload** | [**WebhookDisputePayload**](WebhookDisputePayload.md)|  | [optional] |
 
 ### Return type
 
@@ -162,7 +162,7 @@ Configure ApiKeyAuth:
 
 <a id="licenseCreatedPost"></a>
 # **licenseCreatedPost**
-> licenseCreatedPost(license)
+> licenseCreatedPost(webhookLicensePayload)
 
 License Created
 
@@ -175,9 +175,9 @@ Occurs when a new software license key is created or assigned to a customer purc
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val license : License =  // License | 
+val webhookLicensePayload : WebhookLicensePayload =  // WebhookLicensePayload | 
 try {
-    apiInstance.licenseCreatedPost(license)
+    apiInstance.licenseCreatedPost(webhookLicensePayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#licenseCreatedPost")
     e.printStackTrace()
@@ -190,7 +190,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **license** | [**License**](License.md)|  | [optional] |
+| **webhookLicensePayload** | [**WebhookLicensePayload**](WebhookLicensePayload.md)|  | [optional] |
 
 ### Return type
 
@@ -209,7 +209,7 @@ Configure ApiKeyAuth:
 
 <a id="licenseRevokedPost"></a>
 # **licenseRevokedPost**
-> licenseRevokedPost(license)
+> licenseRevokedPost(webhookLicensePayload)
 
 License Revoked
 
@@ -222,9 +222,9 @@ Occurs when a software license key is revoked (e.g., due to subscription cancell
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val license : License =  // License | 
+val webhookLicensePayload : WebhookLicensePayload =  // WebhookLicensePayload | 
 try {
-    apiInstance.licenseRevokedPost(license)
+    apiInstance.licenseRevokedPost(webhookLicensePayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#licenseRevokedPost")
     e.printStackTrace()
@@ -237,7 +237,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **license** | [**License**](License.md)|  | [optional] |
+| **webhookLicensePayload** | [**WebhookLicensePayload**](WebhookLicensePayload.md)|  | [optional] |
 
 ### Return type
 
@@ -256,7 +256,7 @@ Configure ApiKeyAuth:
 
 <a id="paymentCreatedPost"></a>
 # **paymentCreatedPost**
-> paymentCreatedPost(UNKNOWN_BASE_TYPE)
+> paymentCreatedPost(webhookPaymentPayload)
 
 Payment Created
 
@@ -269,9 +269,9 @@ Occurs when a new payment is initiated (e.g., at checkout start or subscription 
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val UNKNOWN_BASE_TYPE : UNKNOWN_BASE_TYPE = {"id":"pay_123","status":"created","substatus":"incomplete","customerId":"usr_123","customerEmail":"customer@example.com","customerName":"John Doe","customerUsername":"johndoe","productTitle":"SaaS Pro Access","productRoute":"saas-pro-access","planId":"plan_123","membershipId":"mem_123","membershipStatus":"drafted","billingReason":"subscription_create","amount":"29.00","subtotal":"29.00","usdTotal":"29.00","feeAmount":"1.50","amountAfterFees":"27.50","taxAmount":null,"taxBehavior":null,"taxRefundedAmount":null,"refundedAmount":"0","settlementAmount":"29.00","settlementCurrency":"usd","settlementExchangeRate":null,"currency":"USD","refundable":false,"retryable":false,"autoRefunded":false,"paymentMethod":null,"cardBrand":null,"cardLast4":null,"cardExpMonth":null,"cardExpYear":null,"billingAddress":{"name":"John Doe","line1":"123 Main St","line2":"","city":"San Francisco","state":"CA","country":"US","postal_code":"94105"},"licenseKey":null,"filesSnapshot":null,"checkoutId":null,"discountCode":null,"failureMessage":null,"paidAt":"2026-05-25T20:20:05.000Z","refundedAt":null,"disputeAlertedAt":null,"lastPaymentAttempt":null,"nextPaymentAttempt":"2026-05-25T20:20:05.000Z","createdAt":"2026-05-25T20:20:06.000Z","updatedAt":"2026-05-25T20:20:06.000Z","paymentEventType":"payment.created","lastEventType":"payment.created","businessId":"biz_123"} // UNKNOWN_BASE_TYPE | 
+val webhookPaymentPayload : WebhookPaymentPayload = {"id":"pay_123","status":"created","substatus":"incomplete","customerId":"usr_123","customerEmail":"customer@example.com","customerName":"John Doe","customerUsername":"johndoe","productTitle":"SaaS Pro Access","productRoute":"saas-pro-access","planId":"plan_123","membershipId":"mem_123","membershipStatus":"drafted","billingReason":"subscription_create","amount":"29.00","subtotal":"29.00","usdTotal":"29.00","feeAmount":"1.50","amountAfterFees":"27.50","taxAmount":null,"taxBehavior":null,"taxRefundedAmount":null,"refundedAmount":"0","settlementAmount":"29.00","settlementCurrency":"usd","settlementExchangeRate":null,"currency":"USD","refundable":false,"retryable":false,"autoRefunded":false,"paymentMethod":null,"cardBrand":null,"cardLast4":null,"cardExpMonth":null,"cardExpYear":null,"billingAddress":{"name":"John Doe","line1":"123 Main St","line2":"","city":"San Francisco","state":"CA","country":"US","postal_code":"94105"},"licenseKey":null,"filesSnapshot":null,"checkoutId":null,"discountCode":null,"failureMessage":null,"paidAt":"2026-05-25T20:20:05.000Z","refundedAt":null,"disputeAlertedAt":null,"lastPaymentAttempt":null,"nextPaymentAttempt":"2026-05-25T20:20:05.000Z","createdAt":"2026-05-25T20:20:06.000Z","updatedAt":"2026-05-25T20:20:06.000Z","paymentEventType":"payment.created","lastEventType":"payment.created","businessId":"biz_123"} // WebhookPaymentPayload | 
 try {
-    apiInstance.paymentCreatedPost(UNKNOWN_BASE_TYPE)
+    apiInstance.paymentCreatedPost(webhookPaymentPayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#paymentCreatedPost")
     e.printStackTrace()
@@ -284,7 +284,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **UNKNOWN_BASE_TYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] |
+| **webhookPaymentPayload** | [**WebhookPaymentPayload**](WebhookPaymentPayload.md)|  | [optional] |
 
 ### Return type
 
@@ -397,7 +397,7 @@ Configure ApiKeyAuth:
 
 <a id="refundFailedPost"></a>
 # **refundFailedPost**
-> refundFailedPost(UNKNOWN_BASE_TYPE)
+> refundFailedPost(webhookRefundPayload)
 
 Refund Failed
 
@@ -410,9 +410,9 @@ Occurs when a payment refund fails.
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val UNKNOWN_BASE_TYPE : UNKNOWN_BASE_TYPE =  // UNKNOWN_BASE_TYPE | 
+val webhookRefundPayload : WebhookRefundPayload =  // WebhookRefundPayload | 
 try {
-    apiInstance.refundFailedPost(UNKNOWN_BASE_TYPE)
+    apiInstance.refundFailedPost(webhookRefundPayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#refundFailedPost")
     e.printStackTrace()
@@ -425,7 +425,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **UNKNOWN_BASE_TYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] |
+| **webhookRefundPayload** | [**WebhookRefundPayload**](WebhookRefundPayload.md)|  | [optional] |
 
 ### Return type
 
@@ -444,7 +444,7 @@ Configure ApiKeyAuth:
 
 <a id="refundSucceededPost"></a>
 # **refundSucceededPost**
-> refundSucceededPost(UNKNOWN_BASE_TYPE)
+> refundSucceededPost(webhookRefundPayload)
 
 Refund Succeeded
 
@@ -457,9 +457,9 @@ Occurs when a payment refund is confirmed as succeeded.
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val UNKNOWN_BASE_TYPE : UNKNOWN_BASE_TYPE =  // UNKNOWN_BASE_TYPE | 
+val webhookRefundPayload : WebhookRefundPayload =  // WebhookRefundPayload | 
 try {
-    apiInstance.refundSucceededPost(UNKNOWN_BASE_TYPE)
+    apiInstance.refundSucceededPost(webhookRefundPayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#refundSucceededPost")
     e.printStackTrace()
@@ -472,7 +472,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **UNKNOWN_BASE_TYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] |
+| **webhookRefundPayload** | [**WebhookRefundPayload**](WebhookRefundPayload.md)|  | [optional] |
 
 ### Return type
 
@@ -491,7 +491,7 @@ Configure ApiKeyAuth:
 
 <a id="subscriptionCreatedPost"></a>
 # **subscriptionCreatedPost**
-> subscriptionCreatedPost(UNKNOWN_BASE_TYPE)
+> subscriptionCreatedPost(webhookSubscriptionPayload)
 
 Subscription Created
 
@@ -504,9 +504,9 @@ Occurs when a customer subscription is successfully started.
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val UNKNOWN_BASE_TYPE : UNKNOWN_BASE_TYPE =  // UNKNOWN_BASE_TYPE | 
+val webhookSubscriptionPayload : WebhookSubscriptionPayload =  // WebhookSubscriptionPayload | 
 try {
-    apiInstance.subscriptionCreatedPost(UNKNOWN_BASE_TYPE)
+    apiInstance.subscriptionCreatedPost(webhookSubscriptionPayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#subscriptionCreatedPost")
     e.printStackTrace()
@@ -519,7 +519,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **UNKNOWN_BASE_TYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] |
+| **webhookSubscriptionPayload** | [**WebhookSubscriptionPayload**](WebhookSubscriptionPayload.md)|  | [optional] |
 
 ### Return type
 
@@ -538,7 +538,7 @@ Configure ApiKeyAuth:
 
 <a id="subscriptionDeactivatedPost"></a>
 # **subscriptionDeactivatedPost**
-> subscriptionDeactivatedPost(UNKNOWN_BASE_TYPE)
+> subscriptionDeactivatedPost(webhookSubscriptionPayload)
 
 Subscription Deactivated
 
@@ -551,9 +551,9 @@ Occurs when a customer subscription is deactivated or expired.
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val UNKNOWN_BASE_TYPE : UNKNOWN_BASE_TYPE =  // UNKNOWN_BASE_TYPE | 
+val webhookSubscriptionPayload : WebhookSubscriptionPayload =  // WebhookSubscriptionPayload | 
 try {
-    apiInstance.subscriptionDeactivatedPost(UNKNOWN_BASE_TYPE)
+    apiInstance.subscriptionDeactivatedPost(webhookSubscriptionPayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#subscriptionDeactivatedPost")
     e.printStackTrace()
@@ -566,7 +566,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **UNKNOWN_BASE_TYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] |
+| **webhookSubscriptionPayload** | [**WebhookSubscriptionPayload**](WebhookSubscriptionPayload.md)|  | [optional] |
 
 ### Return type
 
@@ -585,7 +585,7 @@ Configure ApiKeyAuth:
 
 <a id="subscriptionUpdatedPost"></a>
 # **subscriptionUpdatedPost**
-> subscriptionUpdatedPost(UNKNOWN_BASE_TYPE)
+> subscriptionUpdatedPost(webhookSubscriptionPayload)
 
 Subscription Updated
 
@@ -598,9 +598,9 @@ Occurs when a customer subscription is updated (e.g., cancel at period end chang
 //import com.solifyn.model.*
 
 val apiInstance = DefaultApi()
-val UNKNOWN_BASE_TYPE : UNKNOWN_BASE_TYPE =  // UNKNOWN_BASE_TYPE | 
+val webhookSubscriptionPayload : WebhookSubscriptionPayload =  // WebhookSubscriptionPayload | 
 try {
-    apiInstance.subscriptionUpdatedPost(UNKNOWN_BASE_TYPE)
+    apiInstance.subscriptionUpdatedPost(webhookSubscriptionPayload)
 } catch (e: ClientException) {
     println("4xx response calling DefaultApi#subscriptionUpdatedPost")
     e.printStackTrace()
@@ -613,7 +613,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **UNKNOWN_BASE_TYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  | [optional] |
+| **webhookSubscriptionPayload** | [**WebhookSubscriptionPayload**](WebhookSubscriptionPayload.md)|  | [optional] |
 
 ### Return type
 

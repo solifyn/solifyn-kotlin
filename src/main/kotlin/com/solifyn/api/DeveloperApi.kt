@@ -19,6 +19,13 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import com.solifyn.model.ApiKeyResponseDto
+import com.solifyn.model.AppPortalUrlResponseDto
+import com.solifyn.model.CreateApiKeyDto
+import com.solifyn.model.CreateWebhookEndpointDto
+import com.solifyn.model.UpdateWebhookEndpointDto
+import com.solifyn.model.WebhookDeliveryResponseDto
+import com.solifyn.model.WebhookEndpointResponseDto
 
 import com.squareup.moshi.Json
 
@@ -45,21 +52,23 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Create Developer API Key
      * 
-     * 
-     * @return void
+     * @param createApiKeyDto 
+     * @return ApiKeyResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun developerControllerCreateApiKey() : Unit {
-        val localVarResponse = developerControllerCreateApiKeyWithHttpInfo()
+    fun developerCreateApiKey(createApiKeyDto: CreateApiKeyDto) : ApiKeyResponseDto {
+        val localVarResponse = developerCreateApiKeyWithHttpInfo(createApiKeyDto = createApiKeyDto)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ApiKeyResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -74,31 +83,36 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Create Developer API Key
      * 
-     * 
-     * @return ApiResponse<Unit?>
+     * @param createApiKeyDto 
+     * @return ApiResponse<ApiKeyResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun developerControllerCreateApiKeyWithHttpInfo() : ApiResponse<Unit?> {
-        val localVariableConfig = developerControllerCreateApiKeyRequestConfig()
+    fun developerCreateApiKeyWithHttpInfo(createApiKeyDto: CreateApiKeyDto) : ApiResponse<ApiKeyResponseDto?> {
+        val localVariableConfig = developerCreateApiKeyRequestConfig(createApiKeyDto = createApiKeyDto)
 
-        return request<Unit, Unit>(
+        return request<CreateApiKeyDto, ApiKeyResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation developerControllerCreateApiKey
+     * To obtain the request config of the operation developerCreateApiKey
      *
+     * @param createApiKeyDto 
      * @return RequestConfig
      */
-    fun developerControllerCreateApiKeyRequestConfig() : RequestConfig<Unit> {
-        val localVariableBody = null
+    fun developerCreateApiKeyRequestConfig(createApiKeyDto: CreateApiKeyDto) : RequestConfig<CreateApiKeyDto> {
+        val localVariableBody = createApiKeyDto
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/v1/developer/api-keys",
@@ -110,21 +124,23 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Create Webhook Endpoint
      * 
-     * 
-     * @return void
+     * @param createWebhookEndpointDto 
+     * @return WebhookEndpointResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun developerControllerCreateWebhookEndpoint() : Unit {
-        val localVarResponse = developerControllerCreateWebhookEndpointWithHttpInfo()
+    fun developerCreateWebhook(createWebhookEndpointDto: CreateWebhookEndpointDto) : WebhookEndpointResponseDto {
+        val localVarResponse = developerCreateWebhookWithHttpInfo(createWebhookEndpointDto = createWebhookEndpointDto)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as WebhookEndpointResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -139,31 +155,36 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Create Webhook Endpoint
      * 
-     * 
-     * @return ApiResponse<Unit?>
+     * @param createWebhookEndpointDto 
+     * @return ApiResponse<WebhookEndpointResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun developerControllerCreateWebhookEndpointWithHttpInfo() : ApiResponse<Unit?> {
-        val localVariableConfig = developerControllerCreateWebhookEndpointRequestConfig()
+    fun developerCreateWebhookWithHttpInfo(createWebhookEndpointDto: CreateWebhookEndpointDto) : ApiResponse<WebhookEndpointResponseDto?> {
+        val localVariableConfig = developerCreateWebhookRequestConfig(createWebhookEndpointDto = createWebhookEndpointDto)
 
-        return request<Unit, Unit>(
+        return request<CreateWebhookEndpointDto, WebhookEndpointResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation developerControllerCreateWebhookEndpoint
+     * To obtain the request config of the operation developerCreateWebhook
      *
+     * @param createWebhookEndpointDto 
      * @return RequestConfig
      */
-    fun developerControllerCreateWebhookEndpointRequestConfig() : RequestConfig<Unit> {
-        val localVariableBody = null
+    fun developerCreateWebhookRequestConfig(createWebhookEndpointDto: CreateWebhookEndpointDto) : RequestConfig<CreateWebhookEndpointDto> {
+        val localVariableBody = createWebhookEndpointDto
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/v1/developer/webhooks",
@@ -175,9 +196,9 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Delete Webhook Endpoint
      * 
-     * 
-     * @param id 
+     * @param id The webhook endpoint ID
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -186,8 +207,8 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun developerControllerDeleteApiKey(id: kotlin.String) : Unit {
-        val localVarResponse = developerControllerDeleteApiKeyWithHttpInfo(id = id)
+    fun developerDeleteWebhook(id: kotlin.String) : Unit {
+        val localVarResponse = developerDeleteWebhookWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -205,16 +226,16 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Delete Webhook Endpoint
      * 
-     * 
-     * @param id 
+     * @param id The webhook endpoint ID
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun developerControllerDeleteApiKeyWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
-        val localVariableConfig = developerControllerDeleteApiKeyRequestConfig(id = id)
+    fun developerDeleteWebhookWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+        val localVariableConfig = developerDeleteWebhookRequestConfig(id = id)
 
         return request<Unit, Unit>(
             localVariableConfig
@@ -222,80 +243,12 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * To obtain the request config of the operation developerControllerDeleteApiKey
+     * To obtain the request config of the operation developerDeleteWebhook
      *
-     * @param id 
+     * @param id The webhook endpoint ID
      * @return RequestConfig
      */
-    fun developerControllerDeleteApiKeyRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        
-        return RequestConfig(
-            method = RequestMethod.DELETE,
-            path = "/v1/developer/api-keys/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = false,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * 
-     * 
-     * @param id 
-     * @return void
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun developerControllerDeleteWebhookEndpoint(id: kotlin.String) : Unit {
-        val localVarResponse = developerControllerDeleteWebhookEndpointWithHttpInfo(id = id)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * 
-     * 
-     * @param id 
-     * @return ApiResponse<Unit?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Throws(IllegalStateException::class, IOException::class)
-    fun developerControllerDeleteWebhookEndpointWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
-        val localVariableConfig = developerControllerDeleteWebhookEndpointRequestConfig(id = id)
-
-        return request<Unit, Unit>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation developerControllerDeleteWebhookEndpoint
-     *
-     * @param id 
-     * @return RequestConfig
-     */
-    fun developerControllerDeleteWebhookEndpointRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun developerDeleteWebhookRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -311,21 +264,22 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Retrieve Hosted Webhooks Portal URL
      * 
-     * 
-     * @return void
+     * @return AppPortalUrlResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun developerControllerGetApiKeys() : Unit {
-        val localVarResponse = developerControllerGetApiKeysWithHttpInfo()
+    fun developerGetAppPortal() : AppPortalUrlResponseDto {
+        val localVarResponse = developerGetAppPortalWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AppPortalUrlResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -340,96 +294,33 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Retrieve Hosted Webhooks Portal URL
      * 
-     * 
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<AppPortalUrlResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun developerControllerGetApiKeysWithHttpInfo() : ApiResponse<Unit?> {
-        val localVariableConfig = developerControllerGetApiKeysRequestConfig()
+    fun developerGetAppPortalWithHttpInfo() : ApiResponse<AppPortalUrlResponseDto?> {
+        val localVariableConfig = developerGetAppPortalRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, AppPortalUrlResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation developerControllerGetApiKeys
+     * To obtain the request config of the operation developerGetAppPortal
      *
      * @return RequestConfig
      */
-    fun developerControllerGetApiKeysRequestConfig() : RequestConfig<Unit> {
+    fun developerGetAppPortalRequestConfig() : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/v1/developer/api-keys",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = false,
-            body = localVariableBody
-        )
-    }
+        localVariableHeaders["Accept"] = "application/json"
 
-    /**
-     * 
-     * 
-     * @return void
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun developerControllerGetAppPortalUrl() : Unit {
-        val localVarResponse = developerControllerGetAppPortalUrlWithHttpInfo()
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiResponse<Unit?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Throws(IllegalStateException::class, IOException::class)
-    fun developerControllerGetAppPortalUrlWithHttpInfo() : ApiResponse<Unit?> {
-        val localVariableConfig = developerControllerGetAppPortalUrlRequestConfig()
-
-        return request<Unit, Unit>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation developerControllerGetAppPortalUrl
-     *
-     * @return RequestConfig
-     */
-    fun developerControllerGetAppPortalUrlRequestConfig() : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/v1/developer/webhooks/app-portal",
@@ -441,22 +332,23 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Retrieve Webhook Endpoint Details
      * 
-     * 
-     * @param id 
-     * @return void
+     * @param id The webhook endpoint ID
+     * @return WebhookEndpointResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun developerControllerGetWebhookDeliveries(id: kotlin.String) : Unit {
-        val localVarResponse = developerControllerGetWebhookDeliveriesWithHttpInfo(id = id)
+    fun developerGetWebhook(id: kotlin.String) : WebhookEndpointResponseDto {
+        val localVarResponse = developerGetWebhookWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as WebhookEndpointResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -471,33 +363,174 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Retrieve Webhook Endpoint Details
      * 
-     * 
-     * @param id 
-     * @return ApiResponse<Unit?>
+     * @param id The webhook endpoint ID
+     * @return ApiResponse<WebhookEndpointResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun developerControllerGetWebhookDeliveriesWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
-        val localVariableConfig = developerControllerGetWebhookDeliveriesRequestConfig(id = id)
+    fun developerGetWebhookWithHttpInfo(id: kotlin.String) : ApiResponse<WebhookEndpointResponseDto?> {
+        val localVariableConfig = developerGetWebhookRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, WebhookEndpointResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation developerControllerGetWebhookDeliveries
+     * To obtain the request config of the operation developerGetWebhook
      *
-     * @param id 
+     * @param id The webhook endpoint ID
      * @return RequestConfig
      */
-    fun developerControllerGetWebhookDeliveriesRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun developerGetWebhookRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/v1/developer/webhooks/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * List Developer API Keys
+     * 
+     * @return kotlin.collections.List<ApiKeyResponseDto>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun developerListApiKeys() : kotlin.collections.List<ApiKeyResponseDto> {
+        val localVarResponse = developerListApiKeysWithHttpInfo()
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<ApiKeyResponseDto>
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * List Developer API Keys
+     * 
+     * @return ApiResponse<kotlin.collections.List<ApiKeyResponseDto>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun developerListApiKeysWithHttpInfo() : ApiResponse<kotlin.collections.List<ApiKeyResponseDto>?> {
+        val localVariableConfig = developerListApiKeysRequestConfig()
+
+        return request<Unit, kotlin.collections.List<ApiKeyResponseDto>>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation developerListApiKeys
+     *
+     * @return RequestConfig
+     */
+    fun developerListApiKeysRequestConfig() : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/v1/developer/api-keys",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Retrieve Webhook Delivery Logs
+     * 
+     * @param id The webhook endpoint ID
+     * @return kotlin.collections.List<WebhookDeliveryResponseDto>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun developerListWebhookDeliveries(id: kotlin.String) : kotlin.collections.List<WebhookDeliveryResponseDto> {
+        val localVarResponse = developerListWebhookDeliveriesWithHttpInfo(id = id)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<WebhookDeliveryResponseDto>
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Retrieve Webhook Delivery Logs
+     * 
+     * @param id The webhook endpoint ID
+     * @return ApiResponse<kotlin.collections.List<WebhookDeliveryResponseDto>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun developerListWebhookDeliveriesWithHttpInfo(id: kotlin.String) : ApiResponse<kotlin.collections.List<WebhookDeliveryResponseDto>?> {
+        val localVariableConfig = developerListWebhookDeliveriesRequestConfig(id = id)
+
+        return request<Unit, kotlin.collections.List<WebhookDeliveryResponseDto>>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation developerListWebhookDeliveries
+     *
+     * @param id The webhook endpoint ID
+     * @return RequestConfig
+     */
+    fun developerListWebhookDeliveriesRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/v1/developer/webhooks/{id}/deliveries".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
@@ -509,21 +542,22 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * List Webhook Endpoints
      * 
-     * 
-     * @return void
+     * @return kotlin.collections.List<WebhookEndpointResponseDto>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun developerControllerGetWebhookEndpoints() : Unit {
-        val localVarResponse = developerControllerGetWebhookEndpointsWithHttpInfo()
+    fun developerListWebhooks() : kotlin.collections.List<WebhookEndpointResponseDto> {
+        val localVarResponse = developerListWebhooksWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<WebhookEndpointResponseDto>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -538,31 +572,33 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * List Webhook Endpoints
      * 
-     * 
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.collections.List<WebhookEndpointResponseDto>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun developerControllerGetWebhookEndpointsWithHttpInfo() : ApiResponse<Unit?> {
-        val localVariableConfig = developerControllerGetWebhookEndpointsRequestConfig()
+    fun developerListWebhooksWithHttpInfo() : ApiResponse<kotlin.collections.List<WebhookEndpointResponseDto>?> {
+        val localVariableConfig = developerListWebhooksRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.collections.List<WebhookEndpointResponseDto>>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation developerControllerGetWebhookEndpoints
+     * To obtain the request config of the operation developerListWebhooks
      *
      * @return RequestConfig
      */
-    fun developerControllerGetWebhookEndpointsRequestConfig() : RequestConfig<Unit> {
+    fun developerListWebhooksRequestConfig() : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        
+        localVariableHeaders["Accept"] = "application/json"
+
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/v1/developer/webhooks",
@@ -574,9 +610,9 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Revoke API Key
      * 
-     * 
-     * @param id 
+     * @param id The API key ID
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -585,8 +621,8 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun developerControllerUpdateWebhookEndpoint(id: kotlin.String) : Unit {
-        val localVarResponse = developerControllerUpdateWebhookEndpointWithHttpInfo(id = id)
+    fun developerRevokeApiKey(id: kotlin.String) : Unit {
+        val localVarResponse = developerRevokeApiKeyWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -604,16 +640,16 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
+     * Revoke API Key
      * 
-     * 
-     * @param id 
+     * @param id The API key ID
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun developerControllerUpdateWebhookEndpointWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
-        val localVariableConfig = developerControllerUpdateWebhookEndpointRequestConfig(id = id)
+    fun developerRevokeApiKeyWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+        val localVariableConfig = developerRevokeApiKeyRequestConfig(id = id)
 
         return request<Unit, Unit>(
             localVariableConfig
@@ -621,16 +657,91 @@ class DeveloperApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * To obtain the request config of the operation developerControllerUpdateWebhookEndpoint
+     * To obtain the request config of the operation developerRevokeApiKey
      *
-     * @param id 
+     * @param id The API key ID
      * @return RequestConfig
      */
-    fun developerControllerUpdateWebhookEndpointRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun developerRevokeApiKeyRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/v1/developer/api-keys/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Update Webhook Endpoint
+     * 
+     * @param id The webhook endpoint ID
+     * @param updateWebhookEndpointDto 
+     * @return WebhookEndpointResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun developerUpdateWebhook(id: kotlin.String, updateWebhookEndpointDto: UpdateWebhookEndpointDto) : WebhookEndpointResponseDto {
+        val localVarResponse = developerUpdateWebhookWithHttpInfo(id = id, updateWebhookEndpointDto = updateWebhookEndpointDto)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as WebhookEndpointResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Update Webhook Endpoint
+     * 
+     * @param id The webhook endpoint ID
+     * @param updateWebhookEndpointDto 
+     * @return ApiResponse<WebhookEndpointResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun developerUpdateWebhookWithHttpInfo(id: kotlin.String, updateWebhookEndpointDto: UpdateWebhookEndpointDto) : ApiResponse<WebhookEndpointResponseDto?> {
+        val localVariableConfig = developerUpdateWebhookRequestConfig(id = id, updateWebhookEndpointDto = updateWebhookEndpointDto)
+
+        return request<UpdateWebhookEndpointDto, WebhookEndpointResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation developerUpdateWebhook
+     *
+     * @param id The webhook endpoint ID
+     * @param updateWebhookEndpointDto 
+     * @return RequestConfig
+     */
+    fun developerUpdateWebhookRequestConfig(id: kotlin.String, updateWebhookEndpointDto: UpdateWebhookEndpointDto) : RequestConfig<UpdateWebhookEndpointDto> {
+        val localVariableBody = updateWebhookEndpointDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
         return RequestConfig(
             method = RequestMethod.PATCH,
             path = "/v1/developer/webhooks/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),

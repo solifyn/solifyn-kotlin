@@ -19,9 +19,12 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import com.solifyn.model.License
 import com.solifyn.model.Order
-import com.solifyn.model.UNKNOWN_BASE_TYPE
+import com.solifyn.model.WebhookDisputePayload
+import com.solifyn.model.WebhookLicensePayload
+import com.solifyn.model.WebhookPaymentPayload
+import com.solifyn.model.WebhookRefundPayload
+import com.solifyn.model.WebhookSubscriptionPayload
 
 import com.squareup.moshi.Json
 
@@ -50,7 +53,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Dispute Created
      * Occurs when a payment charge is disputed by the customer (chargeback initiated).
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookDisputePayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -59,8 +62,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun disputeCreatedPost(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = null) : Unit {
-        val localVarResponse = disputeCreatedPostWithHttpInfo(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun disputeCreatedPost(webhookDisputePayload: WebhookDisputePayload? = null) : Unit {
+        val localVarResponse = disputeCreatedPostWithHttpInfo(webhookDisputePayload = webhookDisputePayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -80,16 +83,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Dispute Created
      * Occurs when a payment charge is disputed by the customer (chargeback initiated).
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookDisputePayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun disputeCreatedPostWithHttpInfo(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : ApiResponse<Unit?> {
-        val localVariableConfig = disputeCreatedPostRequestConfig(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun disputeCreatedPostWithHttpInfo(webhookDisputePayload: WebhookDisputePayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = disputeCreatedPostRequestConfig(webhookDisputePayload = webhookDisputePayload)
 
-        return request<UNKNOWN_BASE_TYPE, Unit>(
+        return request<WebhookDisputePayload, Unit>(
             localVariableConfig
         )
     }
@@ -97,11 +100,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation disputeCreatedPost
      *
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookDisputePayload  (optional)
      * @return RequestConfig
      */
-    fun disputeCreatedPostRequestConfig(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : RequestConfig<UNKNOWN_BASE_TYPE> {
-        val localVariableBody = UNKNOWN_BASE_TYPE
+    fun disputeCreatedPostRequestConfig(webhookDisputePayload: WebhookDisputePayload?) : RequestConfig<WebhookDisputePayload> {
+        val localVariableBody = webhookDisputePayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -119,7 +122,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Dispute Lost
      * Occurs when a dispute challenge is lost and the funds are returned to the cardholder.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookDisputePayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -128,8 +131,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun disputeLostPost(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = null) : Unit {
-        val localVarResponse = disputeLostPostWithHttpInfo(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun disputeLostPost(webhookDisputePayload: WebhookDisputePayload? = null) : Unit {
+        val localVarResponse = disputeLostPostWithHttpInfo(webhookDisputePayload = webhookDisputePayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -149,16 +152,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Dispute Lost
      * Occurs when a dispute challenge is lost and the funds are returned to the cardholder.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookDisputePayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun disputeLostPostWithHttpInfo(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : ApiResponse<Unit?> {
-        val localVariableConfig = disputeLostPostRequestConfig(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun disputeLostPostWithHttpInfo(webhookDisputePayload: WebhookDisputePayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = disputeLostPostRequestConfig(webhookDisputePayload = webhookDisputePayload)
 
-        return request<UNKNOWN_BASE_TYPE, Unit>(
+        return request<WebhookDisputePayload, Unit>(
             localVariableConfig
         )
     }
@@ -166,11 +169,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation disputeLostPost
      *
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookDisputePayload  (optional)
      * @return RequestConfig
      */
-    fun disputeLostPostRequestConfig(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : RequestConfig<UNKNOWN_BASE_TYPE> {
-        val localVariableBody = UNKNOWN_BASE_TYPE
+    fun disputeLostPostRequestConfig(webhookDisputePayload: WebhookDisputePayload?) : RequestConfig<WebhookDisputePayload> {
+        val localVariableBody = webhookDisputePayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -188,7 +191,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Dispute Won
      * Occurs when a dispute challenge is won by the merchant.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookDisputePayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -197,8 +200,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun disputeWonPost(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = null) : Unit {
-        val localVarResponse = disputeWonPostWithHttpInfo(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun disputeWonPost(webhookDisputePayload: WebhookDisputePayload? = null) : Unit {
+        val localVarResponse = disputeWonPostWithHttpInfo(webhookDisputePayload = webhookDisputePayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -218,16 +221,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Dispute Won
      * Occurs when a dispute challenge is won by the merchant.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookDisputePayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun disputeWonPostWithHttpInfo(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : ApiResponse<Unit?> {
-        val localVariableConfig = disputeWonPostRequestConfig(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun disputeWonPostWithHttpInfo(webhookDisputePayload: WebhookDisputePayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = disputeWonPostRequestConfig(webhookDisputePayload = webhookDisputePayload)
 
-        return request<UNKNOWN_BASE_TYPE, Unit>(
+        return request<WebhookDisputePayload, Unit>(
             localVariableConfig
         )
     }
@@ -235,11 +238,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation disputeWonPost
      *
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookDisputePayload  (optional)
      * @return RequestConfig
      */
-    fun disputeWonPostRequestConfig(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : RequestConfig<UNKNOWN_BASE_TYPE> {
-        val localVariableBody = UNKNOWN_BASE_TYPE
+    fun disputeWonPostRequestConfig(webhookDisputePayload: WebhookDisputePayload?) : RequestConfig<WebhookDisputePayload> {
+        val localVariableBody = webhookDisputePayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -257,7 +260,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * License Created
      * Occurs when a new software license key is created or assigned to a customer purchase.
-     * @param license  (optional)
+     * @param webhookLicensePayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -266,8 +269,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun licenseCreatedPost(license: License? = null) : Unit {
-        val localVarResponse = licenseCreatedPostWithHttpInfo(license = license)
+    fun licenseCreatedPost(webhookLicensePayload: WebhookLicensePayload? = null) : Unit {
+        val localVarResponse = licenseCreatedPostWithHttpInfo(webhookLicensePayload = webhookLicensePayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -287,16 +290,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * License Created
      * Occurs when a new software license key is created or assigned to a customer purchase.
-     * @param license  (optional)
+     * @param webhookLicensePayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun licenseCreatedPostWithHttpInfo(license: License?) : ApiResponse<Unit?> {
-        val localVariableConfig = licenseCreatedPostRequestConfig(license = license)
+    fun licenseCreatedPostWithHttpInfo(webhookLicensePayload: WebhookLicensePayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = licenseCreatedPostRequestConfig(webhookLicensePayload = webhookLicensePayload)
 
-        return request<License, Unit>(
+        return request<WebhookLicensePayload, Unit>(
             localVariableConfig
         )
     }
@@ -304,11 +307,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation licenseCreatedPost
      *
-     * @param license  (optional)
+     * @param webhookLicensePayload  (optional)
      * @return RequestConfig
      */
-    fun licenseCreatedPostRequestConfig(license: License?) : RequestConfig<License> {
-        val localVariableBody = license
+    fun licenseCreatedPostRequestConfig(webhookLicensePayload: WebhookLicensePayload?) : RequestConfig<WebhookLicensePayload> {
+        val localVariableBody = webhookLicensePayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -326,7 +329,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * License Revoked
      * Occurs when a software license key is revoked (e.g., due to subscription cancellation, refund, or dispute).
-     * @param license  (optional)
+     * @param webhookLicensePayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -335,8 +338,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun licenseRevokedPost(license: License? = null) : Unit {
-        val localVarResponse = licenseRevokedPostWithHttpInfo(license = license)
+    fun licenseRevokedPost(webhookLicensePayload: WebhookLicensePayload? = null) : Unit {
+        val localVarResponse = licenseRevokedPostWithHttpInfo(webhookLicensePayload = webhookLicensePayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -356,16 +359,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * License Revoked
      * Occurs when a software license key is revoked (e.g., due to subscription cancellation, refund, or dispute).
-     * @param license  (optional)
+     * @param webhookLicensePayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun licenseRevokedPostWithHttpInfo(license: License?) : ApiResponse<Unit?> {
-        val localVariableConfig = licenseRevokedPostRequestConfig(license = license)
+    fun licenseRevokedPostWithHttpInfo(webhookLicensePayload: WebhookLicensePayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = licenseRevokedPostRequestConfig(webhookLicensePayload = webhookLicensePayload)
 
-        return request<License, Unit>(
+        return request<WebhookLicensePayload, Unit>(
             localVariableConfig
         )
     }
@@ -373,11 +376,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation licenseRevokedPost
      *
-     * @param license  (optional)
+     * @param webhookLicensePayload  (optional)
      * @return RequestConfig
      */
-    fun licenseRevokedPostRequestConfig(license: License?) : RequestConfig<License> {
-        val localVariableBody = license
+    fun licenseRevokedPostRequestConfig(webhookLicensePayload: WebhookLicensePayload?) : RequestConfig<WebhookLicensePayload> {
+        val localVariableBody = webhookLicensePayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -395,7 +398,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Payment Created
      * Occurs when a new payment is initiated (e.g., at checkout start or subscription creation). The payment may still be in an incomplete or pending state.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookPaymentPayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -404,8 +407,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun paymentCreatedPost(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = null) : Unit {
-        val localVarResponse = paymentCreatedPostWithHttpInfo(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun paymentCreatedPost(webhookPaymentPayload: WebhookPaymentPayload? = null) : Unit {
+        val localVarResponse = paymentCreatedPostWithHttpInfo(webhookPaymentPayload = webhookPaymentPayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -425,16 +428,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Payment Created
      * Occurs when a new payment is initiated (e.g., at checkout start or subscription creation). The payment may still be in an incomplete or pending state.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookPaymentPayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun paymentCreatedPostWithHttpInfo(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : ApiResponse<Unit?> {
-        val localVariableConfig = paymentCreatedPostRequestConfig(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun paymentCreatedPostWithHttpInfo(webhookPaymentPayload: WebhookPaymentPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = paymentCreatedPostRequestConfig(webhookPaymentPayload = webhookPaymentPayload)
 
-        return request<UNKNOWN_BASE_TYPE, Unit>(
+        return request<WebhookPaymentPayload, Unit>(
             localVariableConfig
         )
     }
@@ -442,11 +445,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation paymentCreatedPost
      *
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookPaymentPayload  (optional)
      * @return RequestConfig
      */
-    fun paymentCreatedPostRequestConfig(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : RequestConfig<UNKNOWN_BASE_TYPE> {
-        val localVariableBody = UNKNOWN_BASE_TYPE
+    fun paymentCreatedPostRequestConfig(webhookPaymentPayload: WebhookPaymentPayload?) : RequestConfig<WebhookPaymentPayload> {
+        val localVariableBody = webhookPaymentPayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -602,7 +605,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Refund Failed
      * Occurs when a payment refund fails.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookRefundPayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -611,8 +614,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun refundFailedPost(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = null) : Unit {
-        val localVarResponse = refundFailedPostWithHttpInfo(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun refundFailedPost(webhookRefundPayload: WebhookRefundPayload? = null) : Unit {
+        val localVarResponse = refundFailedPostWithHttpInfo(webhookRefundPayload = webhookRefundPayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -632,16 +635,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Refund Failed
      * Occurs when a payment refund fails.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookRefundPayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun refundFailedPostWithHttpInfo(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : ApiResponse<Unit?> {
-        val localVariableConfig = refundFailedPostRequestConfig(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun refundFailedPostWithHttpInfo(webhookRefundPayload: WebhookRefundPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = refundFailedPostRequestConfig(webhookRefundPayload = webhookRefundPayload)
 
-        return request<UNKNOWN_BASE_TYPE, Unit>(
+        return request<WebhookRefundPayload, Unit>(
             localVariableConfig
         )
     }
@@ -649,11 +652,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation refundFailedPost
      *
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookRefundPayload  (optional)
      * @return RequestConfig
      */
-    fun refundFailedPostRequestConfig(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : RequestConfig<UNKNOWN_BASE_TYPE> {
-        val localVariableBody = UNKNOWN_BASE_TYPE
+    fun refundFailedPostRequestConfig(webhookRefundPayload: WebhookRefundPayload?) : RequestConfig<WebhookRefundPayload> {
+        val localVariableBody = webhookRefundPayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -671,7 +674,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Refund Succeeded
      * Occurs when a payment refund is confirmed as succeeded.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookRefundPayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -680,8 +683,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun refundSucceededPost(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = null) : Unit {
-        val localVarResponse = refundSucceededPostWithHttpInfo(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun refundSucceededPost(webhookRefundPayload: WebhookRefundPayload? = null) : Unit {
+        val localVarResponse = refundSucceededPostWithHttpInfo(webhookRefundPayload = webhookRefundPayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -701,16 +704,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Refund Succeeded
      * Occurs when a payment refund is confirmed as succeeded.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookRefundPayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun refundSucceededPostWithHttpInfo(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : ApiResponse<Unit?> {
-        val localVariableConfig = refundSucceededPostRequestConfig(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun refundSucceededPostWithHttpInfo(webhookRefundPayload: WebhookRefundPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = refundSucceededPostRequestConfig(webhookRefundPayload = webhookRefundPayload)
 
-        return request<UNKNOWN_BASE_TYPE, Unit>(
+        return request<WebhookRefundPayload, Unit>(
             localVariableConfig
         )
     }
@@ -718,11 +721,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation refundSucceededPost
      *
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookRefundPayload  (optional)
      * @return RequestConfig
      */
-    fun refundSucceededPostRequestConfig(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : RequestConfig<UNKNOWN_BASE_TYPE> {
-        val localVariableBody = UNKNOWN_BASE_TYPE
+    fun refundSucceededPostRequestConfig(webhookRefundPayload: WebhookRefundPayload?) : RequestConfig<WebhookRefundPayload> {
+        val localVariableBody = webhookRefundPayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -740,7 +743,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Subscription Created
      * Occurs when a customer subscription is successfully started.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookSubscriptionPayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -749,8 +752,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun subscriptionCreatedPost(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = null) : Unit {
-        val localVarResponse = subscriptionCreatedPostWithHttpInfo(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun subscriptionCreatedPost(webhookSubscriptionPayload: WebhookSubscriptionPayload? = null) : Unit {
+        val localVarResponse = subscriptionCreatedPostWithHttpInfo(webhookSubscriptionPayload = webhookSubscriptionPayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -770,16 +773,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Subscription Created
      * Occurs when a customer subscription is successfully started.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookSubscriptionPayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun subscriptionCreatedPostWithHttpInfo(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : ApiResponse<Unit?> {
-        val localVariableConfig = subscriptionCreatedPostRequestConfig(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun subscriptionCreatedPostWithHttpInfo(webhookSubscriptionPayload: WebhookSubscriptionPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = subscriptionCreatedPostRequestConfig(webhookSubscriptionPayload = webhookSubscriptionPayload)
 
-        return request<UNKNOWN_BASE_TYPE, Unit>(
+        return request<WebhookSubscriptionPayload, Unit>(
             localVariableConfig
         )
     }
@@ -787,11 +790,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation subscriptionCreatedPost
      *
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookSubscriptionPayload  (optional)
      * @return RequestConfig
      */
-    fun subscriptionCreatedPostRequestConfig(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : RequestConfig<UNKNOWN_BASE_TYPE> {
-        val localVariableBody = UNKNOWN_BASE_TYPE
+    fun subscriptionCreatedPostRequestConfig(webhookSubscriptionPayload: WebhookSubscriptionPayload?) : RequestConfig<WebhookSubscriptionPayload> {
+        val localVariableBody = webhookSubscriptionPayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -809,7 +812,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Subscription Deactivated
      * Occurs when a customer subscription is deactivated or expired.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookSubscriptionPayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -818,8 +821,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun subscriptionDeactivatedPost(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = null) : Unit {
-        val localVarResponse = subscriptionDeactivatedPostWithHttpInfo(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun subscriptionDeactivatedPost(webhookSubscriptionPayload: WebhookSubscriptionPayload? = null) : Unit {
+        val localVarResponse = subscriptionDeactivatedPostWithHttpInfo(webhookSubscriptionPayload = webhookSubscriptionPayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -839,16 +842,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Subscription Deactivated
      * Occurs when a customer subscription is deactivated or expired.
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookSubscriptionPayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun subscriptionDeactivatedPostWithHttpInfo(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : ApiResponse<Unit?> {
-        val localVariableConfig = subscriptionDeactivatedPostRequestConfig(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun subscriptionDeactivatedPostWithHttpInfo(webhookSubscriptionPayload: WebhookSubscriptionPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = subscriptionDeactivatedPostRequestConfig(webhookSubscriptionPayload = webhookSubscriptionPayload)
 
-        return request<UNKNOWN_BASE_TYPE, Unit>(
+        return request<WebhookSubscriptionPayload, Unit>(
             localVariableConfig
         )
     }
@@ -856,11 +859,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation subscriptionDeactivatedPost
      *
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookSubscriptionPayload  (optional)
      * @return RequestConfig
      */
-    fun subscriptionDeactivatedPostRequestConfig(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : RequestConfig<UNKNOWN_BASE_TYPE> {
-        val localVariableBody = UNKNOWN_BASE_TYPE
+    fun subscriptionDeactivatedPostRequestConfig(webhookSubscriptionPayload: WebhookSubscriptionPayload?) : RequestConfig<WebhookSubscriptionPayload> {
+        val localVariableBody = webhookSubscriptionPayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -878,7 +881,7 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Subscription Updated
      * Occurs when a customer subscription is updated (e.g., cancel at period end changes).
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookSubscriptionPayload  (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -887,8 +890,8 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun subscriptionUpdatedPost(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = null) : Unit {
-        val localVarResponse = subscriptionUpdatedPostWithHttpInfo(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun subscriptionUpdatedPost(webhookSubscriptionPayload: WebhookSubscriptionPayload? = null) : Unit {
+        val localVarResponse = subscriptionUpdatedPostWithHttpInfo(webhookSubscriptionPayload = webhookSubscriptionPayload)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -908,16 +911,16 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * Subscription Updated
      * Occurs when a customer subscription is updated (e.g., cancel at period end changes).
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookSubscriptionPayload  (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun subscriptionUpdatedPostWithHttpInfo(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : ApiResponse<Unit?> {
-        val localVariableConfig = subscriptionUpdatedPostRequestConfig(UNKNOWN_BASE_TYPE = UNKNOWN_BASE_TYPE)
+    fun subscriptionUpdatedPostWithHttpInfo(webhookSubscriptionPayload: WebhookSubscriptionPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = subscriptionUpdatedPostRequestConfig(webhookSubscriptionPayload = webhookSubscriptionPayload)
 
-        return request<UNKNOWN_BASE_TYPE, Unit>(
+        return request<WebhookSubscriptionPayload, Unit>(
             localVariableConfig
         )
     }
@@ -925,11 +928,11 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
     /**
      * To obtain the request config of the operation subscriptionUpdatedPost
      *
-     * @param UNKNOWN_BASE_TYPE  (optional)
+     * @param webhookSubscriptionPayload  (optional)
      * @return RequestConfig
      */
-    fun subscriptionUpdatedPostRequestConfig(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE?) : RequestConfig<UNKNOWN_BASE_TYPE> {
-        val localVariableBody = UNKNOWN_BASE_TYPE
+    fun subscriptionUpdatedPostRequestConfig(webhookSubscriptionPayload: WebhookSubscriptionPayload?) : RequestConfig<WebhookSubscriptionPayload> {
+        val localVariableBody = webhookSubscriptionPayload
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

@@ -50,6 +50,7 @@ All URIs are relative to *http://localhost:8000*
 | *BalanceApi* | [**balanceControllerGetSummary**](docs/BalanceApi.md#balancecontrollergetsummary) | **GET** /v1/balances/summary |  |
 | *CheckoutApi* | [**checkoutCreate**](docs/CheckoutApi.md#checkoutcreate) | **POST** /v1/checkout/create | Create Checkout Session |
 | *CheckoutApi* | [**checkoutCreateCollection**](docs/CheckoutApi.md#checkoutcreatecollection) | **POST** /v1/checkout/collection/create | Create Collection Checkout Session |
+| *CheckoutApi* | [**checkoutCreateSetup**](docs/CheckoutApi.md#checkoutcreatesetup) | **POST** /v1/checkout/setup-configuration | Create Setup Checkout Configuration |
 | *CheckoutApi* | [**checkoutGetSession**](docs/CheckoutApi.md#checkoutgetsession) | **GET** /v1/checkout/session/{id} | Get Checkout Session Details |
 | *CheckoutApi* | [**checkoutPricePreview**](docs/CheckoutApi.md#checkoutpricepreview) | **GET** /v1/checkout/price-preview | Get Converted Price Preview |
 | *CheckoutApi* | [**checkoutSupportedCurrencies**](docs/CheckoutApi.md#checkoutsupportedcurrencies) | **GET** /v1/checkout/supported-currencies | Get Supported Currencies |
@@ -73,15 +74,16 @@ All URIs are relative to *http://localhost:8000*
 | *CustomersApi* | [**customersGet**](docs/CustomersApi.md#customersget) | **GET** /v1/customers/{id} | Retrieve Customer |
 | *CustomersApi* | [**customersList**](docs/CustomersApi.md#customerslist) | **GET** /v1/customers | List Customers |
 | *CustomersApi* | [**customersUpdate**](docs/CustomersApi.md#customersupdate) | **PATCH** /v1/customers/{id} | Update Customer |
-| *DeveloperApi* | [**developerControllerCreateApiKey**](docs/DeveloperApi.md#developercontrollercreateapikey) | **POST** /v1/developer/api-keys |  |
-| *DeveloperApi* | [**developerControllerCreateWebhookEndpoint**](docs/DeveloperApi.md#developercontrollercreatewebhookendpoint) | **POST** /v1/developer/webhooks |  |
-| *DeveloperApi* | [**developerControllerDeleteApiKey**](docs/DeveloperApi.md#developercontrollerdeleteapikey) | **DELETE** /v1/developer/api-keys/{id} |  |
-| *DeveloperApi* | [**developerControllerDeleteWebhookEndpoint**](docs/DeveloperApi.md#developercontrollerdeletewebhookendpoint) | **DELETE** /v1/developer/webhooks/{id} |  |
-| *DeveloperApi* | [**developerControllerGetApiKeys**](docs/DeveloperApi.md#developercontrollergetapikeys) | **GET** /v1/developer/api-keys |  |
-| *DeveloperApi* | [**developerControllerGetAppPortalUrl**](docs/DeveloperApi.md#developercontrollergetappportalurl) | **GET** /v1/developer/webhooks/app-portal |  |
-| *DeveloperApi* | [**developerControllerGetWebhookDeliveries**](docs/DeveloperApi.md#developercontrollergetwebhookdeliveries) | **GET** /v1/developer/webhooks/{id}/deliveries |  |
-| *DeveloperApi* | [**developerControllerGetWebhookEndpoints**](docs/DeveloperApi.md#developercontrollergetwebhookendpoints) | **GET** /v1/developer/webhooks |  |
-| *DeveloperApi* | [**developerControllerUpdateWebhookEndpoint**](docs/DeveloperApi.md#developercontrollerupdatewebhookendpoint) | **PATCH** /v1/developer/webhooks/{id} |  |
+| *DeveloperApi* | [**developerCreateApiKey**](docs/DeveloperApi.md#developercreateapikey) | **POST** /v1/developer/api-keys | Create Developer API Key |
+| *DeveloperApi* | [**developerCreateWebhook**](docs/DeveloperApi.md#developercreatewebhook) | **POST** /v1/developer/webhooks | Create Webhook Endpoint |
+| *DeveloperApi* | [**developerDeleteWebhook**](docs/DeveloperApi.md#developerdeletewebhook) | **DELETE** /v1/developer/webhooks/{id} | Delete Webhook Endpoint |
+| *DeveloperApi* | [**developerGetAppPortal**](docs/DeveloperApi.md#developergetappportal) | **GET** /v1/developer/webhooks/app-portal | Retrieve Hosted Webhooks Portal URL |
+| *DeveloperApi* | [**developerGetWebhook**](docs/DeveloperApi.md#developergetwebhook) | **GET** /v1/developer/webhooks/{id} | Retrieve Webhook Endpoint Details |
+| *DeveloperApi* | [**developerListApiKeys**](docs/DeveloperApi.md#developerlistapikeys) | **GET** /v1/developer/api-keys | List Developer API Keys |
+| *DeveloperApi* | [**developerListWebhookDeliveries**](docs/DeveloperApi.md#developerlistwebhookdeliveries) | **GET** /v1/developer/webhooks/{id}/deliveries | Retrieve Webhook Delivery Logs |
+| *DeveloperApi* | [**developerListWebhooks**](docs/DeveloperApi.md#developerlistwebhooks) | **GET** /v1/developer/webhooks | List Webhook Endpoints |
+| *DeveloperApi* | [**developerRevokeApiKey**](docs/DeveloperApi.md#developerrevokeapikey) | **DELETE** /v1/developer/api-keys/{id} | Revoke API Key |
+| *DeveloperApi* | [**developerUpdateWebhook**](docs/DeveloperApi.md#developerupdatewebhook) | **PATCH** /v1/developer/webhooks/{id} | Update Webhook Endpoint |
 | *DigitalFileApi* | [**digitalFileControllerCreate**](docs/DigitalFileApi.md#digitalfilecontrollercreate) | **POST** /v1/digital-files |  |
 | *DigitalFileApi* | [**digitalFileControllerFindAll**](docs/DigitalFileApi.md#digitalfilecontrollerfindall) | **GET** /v1/digital-files |  |
 | *DigitalFileApi* | [**digitalFileControllerRemove**](docs/DigitalFileApi.md#digitalfilecontrollerremove) | **DELETE** /v1/digital-files/{id} |  |
@@ -133,14 +135,6 @@ All URIs are relative to *http://localhost:8000*
 | *OrdersApi* | [**ordersList**](docs/OrdersApi.md#orderslist) | **GET** /v1/orders | List Orders |
 | *OrdersApi* | [**ordersUpdate**](docs/OrdersApi.md#ordersupdate) | **PATCH** /v1/orders/{id} | Update Order Billing Address |
 | *OrdersApi* | [**refundsCreate**](docs/OrdersApi.md#refundscreate) | **POST** /v1/orders/{id}/refund | Create Refund |
-| *PayoutsApi* | [**payoutsCreateWithdrawal**](docs/PayoutsApi.md#payoutscreatewithdrawal) | **POST** /v1/payouts/withdrawals | Create Withdrawal |
-| *PayoutsApi* | [**payoutsGetAccount**](docs/PayoutsApi.md#payoutsgetaccount) | **GET** /v1/payouts/account | Retrieve Payout Account |
-| *PayoutsApi* | [**payoutsGetAccountLink**](docs/PayoutsApi.md#payoutsgetaccountlink) | **GET** /v1/payouts/account-link | Create Account Link |
-| *PayoutsApi* | [**payoutsGetToken**](docs/PayoutsApi.md#payoutsgettoken) | **GET** /v1/payouts/token | Generate Portal Access Token |
-| *PayoutsApi* | [**payoutsGetWithdrawals**](docs/PayoutsApi.md#payoutsgetwithdrawals) | **GET** /v1/payouts/withdrawals | Get Withdrawals List |
-| *PayoutsApi* | [**payoutsListMethods**](docs/PayoutsApi.md#payoutslistmethods) | **GET** /v1/payouts/methods | List Payout Methods |
-| *PayoutsApi* | [**payoutsListVerifications**](docs/PayoutsApi.md#payoutslistverifications) | **GET** /v1/payouts/verifications | List Verifications |
-| *PayoutsApi* | [**payoutsListWithdrawals**](docs/PayoutsApi.md#payoutslistwithdrawals) | **GET** /v1/payouts | List Withdrawals |
 | *ProductAddOnsApi* | [**productsCreateAddon**](docs/ProductAddOnsApi.md#productscreateaddon) | **POST** /v1/products/{id}/addons | Create Product Add-on |
 | *ProductAddOnsApi* | [**productsDeleteAddon**](docs/ProductAddOnsApi.md#productsdeleteaddon) | **DELETE** /v1/products/{id}/addons/{addonId} | Delete Product Add-on |
 | *ProductAddOnsApi* | [**productsGetAddon**](docs/ProductAddOnsApi.md#productsgetaddon) | **GET** /v1/products/{id}/addons/{addonId} | Retrieve Product Add-on |
@@ -153,6 +147,11 @@ All URIs are relative to *http://localhost:8000*
 | *ProductsApi* | [**productsList**](docs/ProductsApi.md#productslist) | **GET** /v1/products | List Products |
 | *ProductsApi* | [**productsUnarchive**](docs/ProductsApi.md#productsunarchive) | **POST** /v1/products/{id}/unarchive | Unarchive Product |
 | *ProductsApi* | [**productsUpdate**](docs/ProductsApi.md#productsupdate) | **PATCH** /v1/products/{id} | Update Product |
+| *RefundRequestsApi* | [**refundRequestsList**](docs/RefundRequestsApi.md#refundrequestslist) | **GET** /v1/refund-requests | List Refund Requests (Merchant) |
+| *RefundRequestsApi* | [**refundRequestsListMessages**](docs/RefundRequestsApi.md#refundrequestslistmessages) | **GET** /v1/refund-requests/{id}/messages | List Messages for Refund Request (Merchant) |
+| *RefundRequestsApi* | [**refundRequestsSendMessage**](docs/RefundRequestsApi.md#refundrequestssendmessage) | **POST** /v1/refund-requests/{id}/messages | Send Refund Request Message (Merchant) |
+| *RefundRequestsApi* | [**refundRequestsUpdateStatus**](docs/RefundRequestsApi.md#refundrequestsupdatestatus) | **PATCH** /v1/refund-requests/{id}/status | Update Refund Request Status (Merchant) |
+| *RefundRequestsApi* | [**refundRequestsUploadEvidence**](docs/RefundRequestsApi.md#refundrequestsuploadevidence) | **POST** /v1/refund-requests/upload-evidence | Upload Dispute Evidence File (Merchant) |
 | *RefundsChargebacksApi* | [**refundsCreate**](docs/RefundsChargebacksApi.md#refundscreate) | **POST** /v1/orders/{id}/refund | Create Refund |
 | *RefundsChargebacksApi* | [**refundsGet**](docs/RefundsChargebacksApi.md#refundsget) | **GET** /v1/refunds/{id} | Retrieve Refund details |
 | *RefundsChargebacksApi* | [**refundsList**](docs/RefundsChargebacksApi.md#refundslist) | **GET** /v1/refunds | List Refunds |
@@ -161,6 +160,15 @@ All URIs are relative to *http://localhost:8000*
 | *SubscriptionsApi* | [**subscriptionsList**](docs/SubscriptionsApi.md#subscriptionslist) | **GET** /v1/subscriptions | List Subscriptions |
 | *WebhookApi* | [**webhookControllerHandleSvixWebhook**](docs/WebhookApi.md#webhookcontrollerhandlesvixwebhook) | **POST** /v1/webhook/svix |  |
 | *WebhookApi* | [**webhookControllerHandleWebhook**](docs/WebhookApi.md#webhookcontrollerhandlewebhook) | **POST** /v1/webhook |  |
+| *WebhookEndpointApi* | [**operationalWebhookControllerCreate**](docs/WebhookEndpointApi.md#operationalwebhookcontrollercreate) | **POST** /v1/operational-webhook/endpoint | Create Operational Webhook Endpoint |
+| *WebhookEndpointApi* | [**operationalWebhookControllerDelete**](docs/WebhookEndpointApi.md#operationalwebhookcontrollerdelete) | **DELETE** /v1/operational-webhook/endpoint/{id} | Delete Operational Webhook Endpoint |
+| *WebhookEndpointApi* | [**operationalWebhookControllerGet**](docs/WebhookEndpointApi.md#operationalwebhookcontrollerget) | **GET** /v1/operational-webhook/endpoint/{id} | Get Operational Webhook Endpoint |
+| *WebhookEndpointApi* | [**operationalWebhookControllerGetHeaders**](docs/WebhookEndpointApi.md#operationalwebhookcontrollergetheaders) | **GET** /v1/operational-webhook/endpoint/{id}/headers | Get Operational Webhook Endpoint Headers |
+| *WebhookEndpointApi* | [**operationalWebhookControllerGetSecret**](docs/WebhookEndpointApi.md#operationalwebhookcontrollergetsecret) | **GET** /v1/operational-webhook/endpoint/{id}/secret | Get Operational Webhook Endpoint Secret |
+| *WebhookEndpointApi* | [**operationalWebhookControllerList**](docs/WebhookEndpointApi.md#operationalwebhookcontrollerlist) | **GET** /v1/operational-webhook/endpoint | List Operational Webhook Endpoints |
+| *WebhookEndpointApi* | [**operationalWebhookControllerRotateSecret**](docs/WebhookEndpointApi.md#operationalwebhookcontrollerrotatesecret) | **POST** /v1/operational-webhook/endpoint/{id}/secret/rotate | Rotate Operational Webhook Endpoint Secret |
+| *WebhookEndpointApi* | [**operationalWebhookControllerUpdate**](docs/WebhookEndpointApi.md#operationalwebhookcontrollerupdate) | **PUT** /v1/operational-webhook/endpoint/{id} | Update Operational Webhook Endpoint |
+| *WebhookEndpointApi* | [**operationalWebhookControllerUpdateHeaders**](docs/WebhookEndpointApi.md#operationalwebhookcontrollerupdateheaders) | **PUT** /v1/operational-webhook/endpoint/{id}/headers | Set Operational Webhook Endpoint Headers |
 
 
 <a id="documentation-for-models"></a>
@@ -170,13 +178,11 @@ All URIs are relative to *http://localhost:8000*
  - [com.solifyn.model.Addon](docs/Addon.md)
  - [com.solifyn.model.AddonCreate](docs/AddonCreate.md)
  - [com.solifyn.model.AddonUpdate](docs/AddonUpdate.md)
+ - [com.solifyn.model.ApiKeyResponseDto](docs/ApiKeyResponseDto.md)
+ - [com.solifyn.model.AppPortalUrlResponseDto](docs/AppPortalUrlResponseDto.md)
  - [com.solifyn.model.Brand](docs/Brand.md)
  - [com.solifyn.model.BrandCreate](docs/BrandCreate.md)
  - [com.solifyn.model.BrandUpdate](docs/BrandUpdate.md)
- - [com.solifyn.model.Business](docs/Business.md)
- - [com.solifyn.model.BusinessCreate](docs/BusinessCreate.md)
- - [com.solifyn.model.BusinessFullCreate](docs/BusinessFullCreate.md)
- - [com.solifyn.model.BusinessFullCreateResponse](docs/BusinessFullCreateResponse.md)
  - [com.solifyn.model.CheckoutLinkMessageResponseDto](docs/CheckoutLinkMessageResponseDto.md)
  - [com.solifyn.model.CheckoutLinkResponseDto](docs/CheckoutLinkResponseDto.md)
  - [com.solifyn.model.CheckoutResponseDto](docs/CheckoutResponseDto.md)
@@ -191,12 +197,15 @@ All URIs are relative to *http://localhost:8000*
  - [com.solifyn.model.CollectionResponseDto](docs/CollectionResponseDto.md)
  - [com.solifyn.model.CollectionUnarchivedResponseDto](docs/CollectionUnarchivedResponseDto.md)
  - [com.solifyn.model.CollectionUpdatedResponseDto](docs/CollectionUpdatedResponseDto.md)
+ - [com.solifyn.model.CreateApiKeyDto](docs/CreateApiKeyDto.md)
  - [com.solifyn.model.CreateCheckoutDto](docs/CreateCheckoutDto.md)
  - [com.solifyn.model.CreateCheckoutLinkDto](docs/CreateCheckoutLinkDto.md)
  - [com.solifyn.model.CreateCollectionCheckoutDto](docs/CreateCollectionCheckoutDto.md)
  - [com.solifyn.model.CreateCollectionDto](docs/CreateCollectionDto.md)
  - [com.solifyn.model.CreateCustomerDto](docs/CreateCustomerDto.md)
  - [com.solifyn.model.CreateMeterDto](docs/CreateMeterDto.md)
+ - [com.solifyn.model.CreateSetupCheckoutDto](docs/CreateSetupCheckoutDto.md)
+ - [com.solifyn.model.CreateWebhookEndpointDto](docs/CreateWebhookEndpointDto.md)
  - [com.solifyn.model.CustomerListResponseDto](docs/CustomerListResponseDto.md)
  - [com.solifyn.model.CustomerMessageResponseDto](docs/CustomerMessageResponseDto.md)
  - [com.solifyn.model.CustomerResponseDto](docs/CustomerResponseDto.md)
@@ -235,6 +244,14 @@ All URIs are relative to *http://localhost:8000*
  - [com.solifyn.model.MeterQuantitiesResponseDto](docs/MeterQuantitiesResponseDto.md)
  - [com.solifyn.model.MeterResponseDto](docs/MeterResponseDto.md)
  - [com.solifyn.model.MeterUsageEventDto](docs/MeterUsageEventDto.md)
+ - [com.solifyn.model.OperationalWebhookEndpointHeadersInDto](docs/OperationalWebhookEndpointHeadersInDto.md)
+ - [com.solifyn.model.OperationalWebhookEndpointHeadersResponseDto](docs/OperationalWebhookEndpointHeadersResponseDto.md)
+ - [com.solifyn.model.OperationalWebhookEndpointInDto](docs/OperationalWebhookEndpointInDto.md)
+ - [com.solifyn.model.OperationalWebhookEndpointListResponseDto](docs/OperationalWebhookEndpointListResponseDto.md)
+ - [com.solifyn.model.OperationalWebhookEndpointResponseDto](docs/OperationalWebhookEndpointResponseDto.md)
+ - [com.solifyn.model.OperationalWebhookEndpointSecretInDto](docs/OperationalWebhookEndpointSecretInDto.md)
+ - [com.solifyn.model.OperationalWebhookEndpointSecretResponseDto](docs/OperationalWebhookEndpointSecretResponseDto.md)
+ - [com.solifyn.model.OperationalWebhookEndpointUpdateDto](docs/OperationalWebhookEndpointUpdateDto.md)
  - [com.solifyn.model.Order](docs/Order.md)
  - [com.solifyn.model.OrderBilling](docs/OrderBilling.md)
  - [com.solifyn.model.OrderBillingUpdate](docs/OrderBillingUpdate.md)
@@ -245,13 +262,6 @@ All URIs are relative to *http://localhost:8000*
  - [com.solifyn.model.OrderRefund](docs/OrderRefund.md)
  - [com.solifyn.model.OrderRefundCreate](docs/OrderRefundCreate.md)
  - [com.solifyn.model.OrderUpdate](docs/OrderUpdate.md)
- - [com.solifyn.model.PayoutAccessToken](docs/PayoutAccessToken.md)
- - [com.solifyn.model.PayoutAccount](docs/PayoutAccount.md)
- - [com.solifyn.model.PayoutAccountLink](docs/PayoutAccountLink.md)
- - [com.solifyn.model.PayoutMethod](docs/PayoutMethod.md)
- - [com.solifyn.model.PayoutMethodList](docs/PayoutMethodList.md)
- - [com.solifyn.model.PayoutVerification](docs/PayoutVerification.md)
- - [com.solifyn.model.PayoutVerificationList](docs/PayoutVerificationList.md)
  - [com.solifyn.model.PricePreviewResponseDto](docs/PricePreviewResponseDto.md)
  - [com.solifyn.model.Product](docs/Product.md)
  - [com.solifyn.model.ProductCreate](docs/ProductCreate.md)
@@ -286,16 +296,15 @@ All URIs are relative to *http://localhost:8000*
  - [com.solifyn.model.UpdateCustomerDto](docs/UpdateCustomerDto.md)
  - [com.solifyn.model.UpdateInstanceDto](docs/UpdateInstanceDto.md)
  - [com.solifyn.model.UpdateMeterDto](docs/UpdateMeterDto.md)
- - [com.solifyn.model.UserPage](docs/UserPage.md)
- - [com.solifyn.model.UserSettings](docs/UserSettings.md)
- - [com.solifyn.model.UserSettingsUpdate](docs/UserSettingsUpdate.md)
- - [com.solifyn.model.UserStats](docs/UserStats.md)
- - [com.solifyn.model.UserTheme](docs/UserTheme.md)
- - [com.solifyn.model.UserThemeUpdate](docs/UserThemeUpdate.md)
- - [com.solifyn.model.WhopApiKeysRotation](docs/WhopApiKeysRotation.md)
- - [com.solifyn.model.Withdrawal](docs/Withdrawal.md)
- - [com.solifyn.model.WithdrawalCreate](docs/WithdrawalCreate.md)
- - [com.solifyn.model.WithdrawalList](docs/WithdrawalList.md)
+ - [com.solifyn.model.UpdateWebhookEndpointDto](docs/UpdateWebhookEndpointDto.md)
+ - [com.solifyn.model.WebhookDeliveryResponseDto](docs/WebhookDeliveryResponseDto.md)
+ - [com.solifyn.model.WebhookDisputePayload](docs/WebhookDisputePayload.md)
+ - [com.solifyn.model.WebhookEndpointResponseDto](docs/WebhookEndpointResponseDto.md)
+ - [com.solifyn.model.WebhookLicensePayload](docs/WebhookLicensePayload.md)
+ - [com.solifyn.model.WebhookPaymentPayload](docs/WebhookPaymentPayload.md)
+ - [com.solifyn.model.WebhookPaymentPayloadBillingAddress](docs/WebhookPaymentPayloadBillingAddress.md)
+ - [com.solifyn.model.WebhookRefundPayload](docs/WebhookRefundPayload.md)
+ - [com.solifyn.model.WebhookSubscriptionPayload](docs/WebhookSubscriptionPayload.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -45,6 +45,7 @@ import com.squareup.moshi.JsonClass
  * @param customFields Form field configurations to gather during checkout.
  * @param stock Initial stock quantity limit.
  * @param isListed Whether the product is publicly visible.
+ * @param isFree Whether the product is free of charge.
  * @param addons Product addons configurations.
  */
 
@@ -134,6 +135,10 @@ data class ProductUpdate (
     /* Whether the product is publicly visible. */
     @Json(name = "isListed")
     val isListed: kotlin.Boolean? = true,
+
+    /* Whether the product is free of charge. */
+    @Json(name = "isFree")
+    val isFree: kotlin.Boolean? = false,
 
     /* Product addons configurations. */
     @Json(name = "addons")

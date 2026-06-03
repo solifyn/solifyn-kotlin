@@ -44,6 +44,7 @@ import com.squareup.moshi.JsonClass
  * @param stock Available stock quantity, or null for unlimited inventory.
  * @param activationLimit Maximum number of simultaneous active instances/devices allowed per issued license key (applicable if hasLicenseKey is true).
  * @param isListed Defines if the product is listed publicly on the merchant's storefront template.
+ * @param isFree Whether the product is free.
  * @param createdAt Timestamp indicating exactly when the product was created.
  * @param updatedAt Timestamp indicating when the product was last modified.
  * @param isPermanentlyDeleted Indicates if the product has been permanently deleted.
@@ -147,6 +148,10 @@ data class CollectionProductDto (
     /* Defines if the product is listed publicly on the merchant's storefront template. */
     @Json(name = "isListed")
     val isListed: kotlin.Boolean,
+
+    /* Whether the product is free. */
+    @Json(name = "isFree")
+    val isFree: kotlin.Boolean,
 
     /* Timestamp indicating exactly when the product was created. */
     @Json(name = "createdAt")

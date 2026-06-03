@@ -43,6 +43,7 @@ import com.squareup.moshi.JsonClass
  * @param refundable Indicates whether the order is eligible for refund.
  * @param businessId Business unique ID identifier.
  * @param businessName Business display title/name.
+ * @param usdTotal Total paid amount converted to USD.
  * @param paidAt Payment completion/paid timestamp.
  * @param cardLastFour Last four digits of card used.
  * @param cardNetwork Card network/brand.
@@ -120,6 +121,10 @@ data class Order (
     /* Business display title/name. */
     @Json(name = "businessName")
     val businessName: kotlin.String,
+
+    /* Total paid amount converted to USD. */
+    @Json(name = "usdTotal")
+    val usdTotal: java.math.BigDecimal? = null,
 
     /* Payment completion/paid timestamp. */
     @Json(name = "paidAt")

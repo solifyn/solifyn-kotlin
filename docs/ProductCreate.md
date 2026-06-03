@@ -25,6 +25,7 @@
 | **customFields** | [**kotlin.collections.List&lt;ProductCreateCustomFieldsInner&gt;**](ProductCreateCustomFieldsInner.md) | Form field configurations to gather during checkout. |  [optional] |
 | **stock** | **kotlin.Int** | Initial stock quantity limit. |  [optional] |
 | **isListed** | **kotlin.Boolean** | Whether the product is publicly visible. |  [optional] |
+| **isFree** | **kotlin.Boolean** | Whether the product is free of charge. |  [optional] |
 | **addons** | [**kotlin.collections.List&lt;ProductCreateAddonsInner&gt;**](ProductCreateAddonsInner.md) | Product addons configurations. |  [optional] |
 
 

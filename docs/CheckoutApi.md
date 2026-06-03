@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost:8000*
 | ------------- | ------------- | ------------- |
 | [**checkoutCreate**](CheckoutApi.md#checkoutCreate) | **POST** /v1/checkout/create | Create Checkout Session |
 | [**checkoutCreateCollection**](CheckoutApi.md#checkoutCreateCollection) | **POST** /v1/checkout/collection/create | Create Collection Checkout Session |
+| [**checkoutCreateSetup**](CheckoutApi.md#checkoutCreateSetup) | **POST** /v1/checkout/setup-configuration | Create Setup Checkout Configuration |
 | [**checkoutGetSession**](CheckoutApi.md#checkoutGetSession) | **GET** /v1/checkout/session/{id} | Get Checkout Session Details |
 | [**checkoutPricePreview**](CheckoutApi.md#checkoutPricePreview) | **GET** /v1/checkout/price-preview | Get Converted Price Preview |
 | [**checkoutSupportedCurrencies**](CheckoutApi.md#checkoutSupportedCurrencies) | **GET** /v1/checkout/supported-currencies | Get Supported Currencies |
@@ -102,6 +103,51 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+<a id="checkoutCreateSetup"></a>
+# **checkoutCreateSetup**
+> checkoutCreateSetup(createSetupCheckoutDto)
+
+Create Setup Checkout Configuration
+
+Create a new checkout session in setup mode for collecting cards without immediate charge.
+
+### Example
+```kotlin
+// Import classes:
+//import com.solifyn.infrastructure.*
+//import com.solifyn.model.*
+
+val apiInstance = CheckoutApi()
+val createSetupCheckoutDto : CreateSetupCheckoutDto =  // CreateSetupCheckoutDto | 
+try {
+    apiInstance.checkoutCreateSetup(createSetupCheckoutDto)
+} catch (e: ClientException) {
+    println("4xx response calling CheckoutApi#checkoutCreateSetup")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling CheckoutApi#checkoutCreateSetup")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **createSetupCheckoutDto** | [**CreateSetupCheckoutDto**](CreateSetupCheckoutDto.md)|  | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a id="checkoutGetSession"></a>
 # **checkoutGetSession**

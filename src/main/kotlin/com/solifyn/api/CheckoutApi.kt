@@ -23,6 +23,7 @@ import com.solifyn.model.CheckoutResponseDto
 import com.solifyn.model.CheckoutSessionDetailsDto
 import com.solifyn.model.CreateCheckoutDto
 import com.solifyn.model.CreateCollectionCheckoutDto
+import com.solifyn.model.CreateSetupCheckoutDto
 import com.solifyn.model.PricePreviewResponseDto
 import com.solifyn.model.SupportedCurrenciesResponseDto
 
@@ -187,6 +188,75 @@ class CheckoutApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/v1/checkout/collection/create",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Create Setup Checkout Configuration
+     * Create a new checkout session in setup mode for collecting cards without immediate charge.
+     * @param createSetupCheckoutDto 
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun checkoutCreateSetup(createSetupCheckoutDto: CreateSetupCheckoutDto) : Unit {
+        val localVarResponse = checkoutCreateSetupWithHttpInfo(createSetupCheckoutDto = createSetupCheckoutDto)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Create Setup Checkout Configuration
+     * Create a new checkout session in setup mode for collecting cards without immediate charge.
+     * @param createSetupCheckoutDto 
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun checkoutCreateSetupWithHttpInfo(createSetupCheckoutDto: CreateSetupCheckoutDto) : ApiResponse<Unit?> {
+        val localVariableConfig = checkoutCreateSetupRequestConfig(createSetupCheckoutDto = createSetupCheckoutDto)
+
+        return request<CreateSetupCheckoutDto, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation checkoutCreateSetup
+     *
+     * @param createSetupCheckoutDto 
+     * @return RequestConfig
+     */
+    fun checkoutCreateSetupRequestConfig(createSetupCheckoutDto: CreateSetupCheckoutDto) : RequestConfig<CreateSetupCheckoutDto> {
+        val localVariableBody = createSetupCheckoutDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/v1/checkout/setup-configuration",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = false,

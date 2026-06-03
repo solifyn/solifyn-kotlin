@@ -26,6 +26,7 @@
 | **stock** | **kotlin.Int** | Available stock quantity, or null for unlimited inventory. |  |
 | **activationLimit** | **kotlin.Int** | Maximum number of simultaneous active instances/devices allowed per issued license key (applicable if hasLicenseKey is true). |  |
 | **isListed** | **kotlin.Boolean** | Defines if the product is listed publicly on the merchant&#39;s storefront template. |  |
+| **isFree** | **kotlin.Boolean** | Whether the product is free. |  |
 | **createdAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) | Timestamp indicating exactly when the product was created. |  |
 | **updatedAt** | [**java.time.OffsetDateTime**](java.time.OffsetDateTime.md) | Timestamp indicating when the product was last modified. |  |
 | **isPermanentlyDeleted** | **kotlin.Boolean** | Indicates if the product has been permanently deleted. |  |
