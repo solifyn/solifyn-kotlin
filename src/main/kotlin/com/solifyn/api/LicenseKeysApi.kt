@@ -45,7 +45,7 @@ class LicenseKeysApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:8000")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.solifyn.com")
         }
     }
 

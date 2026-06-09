@@ -34,6 +34,7 @@ import com.squareup.moshi.JsonClass
  * @param paymentId Database payment transaction ID
  * @param checkoutUrl Checkout session redirect URL if loaded in link mode
  * @param product The details of the product being purchased
+ * @param entitlementGrants List of entitlement grants (e.g. GitHub repo invites) associated with this checkout.
  */
 
 
@@ -81,7 +82,11 @@ data class CheckoutSessionDetailsDto (
 
     /* The details of the product being purchased */
     @Json(name = "product")
-    val product: Product? = null
+    val product: Product? = null,
+
+    /* List of entitlement grants (e.g. GitHub repo invites) associated with this checkout. */
+    @Json(name = "entitlementGrants")
+    val entitlementGrants: kotlin.collections.List<kotlin.Any>? = null
 
 ) {
 

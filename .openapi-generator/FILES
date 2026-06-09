@@ -59,6 +59,10 @@ docs/DisputeFileUpload.md
 docs/DisputeList.md
 docs/DisputeListMetaDto.md
 docs/DisputesApi.md
+docs/EntitlementGrantResponseDto.md
+docs/EntitlementGrantsApi.md
+docs/GitHubIntegrationApi.md
+docs/GithubReposResponseDto.md
 docs/Instance.md
 docs/Invoice.md
 docs/License.md
@@ -136,6 +140,7 @@ docs/SubscriptionUserDto.md
 docs/SubscriptionsAction201Response.md
 docs/SubscriptionsApi.md
 docs/SupportedCurrenciesResponseDto.md
+docs/SyncLoginDto.md
 docs/UpdateCheckoutLinkDto.md
 docs/UpdateCollectionDto.md
 docs/UpdateCollectionProductDto.md
@@ -168,6 +173,8 @@ src/main/kotlin/com/solifyn/api/DeveloperApi.kt
 src/main/kotlin/com/solifyn/api/DigitalFileApi.kt
 src/main/kotlin/com/solifyn/api/DiscountsApi.kt
 src/main/kotlin/com/solifyn/api/DisputesApi.kt
+src/main/kotlin/com/solifyn/api/EntitlementGrantsApi.kt
+src/main/kotlin/com/solifyn/api/GitHubIntegrationApi.kt
 src/main/kotlin/com/solifyn/api/LicenseApi.kt
 src/main/kotlin/com/solifyn/api/LicenseKeysApi.kt
 src/main/kotlin/com/solifyn/api/LicenseKeysClientApi.kt
@@ -246,6 +253,8 @@ src/main/kotlin/com/solifyn/model/DisputeEvidenceUpdate.kt
 src/main/kotlin/com/solifyn/model/DisputeFileUpload.kt
 src/main/kotlin/com/solifyn/model/DisputeList.kt
 src/main/kotlin/com/solifyn/model/DisputeListMetaDto.kt
+src/main/kotlin/com/solifyn/model/EntitlementGrantResponseDto.kt
+src/main/kotlin/com/solifyn/model/GithubReposResponseDto.kt
 src/main/kotlin/com/solifyn/model/Instance.kt
 src/main/kotlin/com/solifyn/model/Invoice.kt
 src/main/kotlin/com/solifyn/model/License.kt
@@ -313,6 +322,7 @@ src/main/kotlin/com/solifyn/model/SubscriptionSeatAdjustment.kt
 src/main/kotlin/com/solifyn/model/SubscriptionUserDto.kt
 src/main/kotlin/com/solifyn/model/SubscriptionsAction201Response.kt
 src/main/kotlin/com/solifyn/model/SupportedCurrenciesResponseDto.kt
+src/main/kotlin/com/solifyn/model/SyncLoginDto.kt
 src/main/kotlin/com/solifyn/model/UpdateCheckoutLinkDto.kt
 src/main/kotlin/com/solifyn/model/UpdateCollectionDto.kt
 src/main/kotlin/com/solifyn/model/UpdateCollectionProductDto.kt
@@ -328,5 +338,3 @@ src/main/kotlin/com/solifyn/model/WebhookPaymentPayload.kt
 src/main/kotlin/com/solifyn/model/WebhookPaymentPayloadBillingAddress.kt
 src/main/kotlin/com/solifyn/model/WebhookRefundPayload.kt
 src/main/kotlin/com/solifyn/model/WebhookSubscriptionPayload.kt
-src/test/kotlin/com/solifyn/api/RefundRequestsApiTest.kt
-src/test/kotlin/com/solifyn/model/CreateSetupCheckoutDtoTest.kt

@@ -47,7 +47,7 @@ class CheckoutApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:8000")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.solifyn.com")
         }
     }
 

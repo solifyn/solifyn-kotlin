@@ -15,6 +15,7 @@
 | **paymentId** | **kotlin.String** | Database payment transaction ID |  [optional] |
 | **checkoutUrl** | **kotlin.String** | Checkout session redirect URL if loaded in link mode |  [optional] |
 | **product** | [**Product**](Product.md) | The details of the product being purchased |  [optional] |
+| **entitlementGrants** | [**kotlin.collections.List&lt;kotlin.Any&gt;**](kotlin.Any.md) | List of entitlement grants (e.g. GitHub repo invites) associated with this checkout. |  [optional] |
 
 
 

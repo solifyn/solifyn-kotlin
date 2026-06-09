@@ -15,6 +15,9 @@
 | **discount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Discount value as a percentage or fixed amount. |  |
 | **hasLicenseKey** | **kotlin.Boolean** | Indicates if the product issues a cryptographically secure software license key upon checkout completion. |  |
 | **hasDigitalDelivery** | **kotlin.Boolean** | Whether the product includes digital file downloads upon purchase. |  |
+| **hasGithubAccess** | **kotlin.Boolean** | Whether the product includes GitHub repository access. |  |
+| **githubRepo** | **kotlin.String** | GitHub repository to grant access to (format: owner/repo). |  |
+| **githubPermission** | [**inline**](#GithubPermission) | GitHub collaborator permission level. |  |
 | **isTaxInclusive** | **kotlin.Boolean** | Whether the product price already includes applicable sales taxes. |  |
 | **billingPeriod** | **kotlin.Int** | The subscription billing cycle interval in days (for subscription products). |  |
 | **trialPeriodDays** | **kotlin.Int** | Trial duration in days for subscription products. |  |
@@ -52,6 +55,13 @@
 | Name | Value |
 | ---- | ----- |
 | pricingType | usage_based, one_time, renewal |
+
+
+<a id="GithubPermission"></a>
+## Enum: githubPermission
+| Name | Value |
+| ---- | ----- |
+| githubPermission | pull, triage, push, maintain, admin |
 
 
 

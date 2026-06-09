@@ -13,6 +13,9 @@
 | **discount** | [**java.math.BigDecimal**](java.math.BigDecimal.md) | Percentage or flat rate discount. |  [optional] |
 | **hasLicenseKey** | **kotlin.Boolean** | Whether to automatically issue license keys upon successful orders. |  [optional] |
 | **hasDigitalDelivery** | **kotlin.Boolean** | Whether the purchase includes downloadable files. |  [optional] |
+| **hasGithubAccess** | **kotlin.Boolean** | Whether the purchase includes GitHub repository access. |  [optional] |
+| **githubRepo** | **kotlin.String** | GitHub repository to grant access to (format: owner/repo). |  [optional] |
+| **githubPermission** | [**inline**](#GithubPermission) | GitHub collaborator permission level. |  [optional] |
 | **isTaxInclusive** | **kotlin.Boolean** | Whether tax is included in the base price. |  [optional] |
 | **activationLimit** | **kotlin.Int** | Maximum concurrent activated instances allowed per license key. |  [optional] |
 | **brandId** | **kotlin.String** | Brand id for the product, if not provided will default to primary brand. |  [optional] |
@@ -41,6 +44,13 @@
 | Name | Value |
 | ---- | ----- |
 | taxCategory | digital_products, saas, physical_products, service |
+
+
+<a id="GithubPermission"></a>
+## Enum: githubPermission
+| Name | Value |
+| ---- | ----- |
+| githubPermission | pull, triage, push, maintain, admin |
 
 
 

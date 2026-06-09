@@ -48,7 +48,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
-            System.getProperties().getProperty(ApiClient.baseUrlKey, "http://localhost:8000")
+            System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.solifyn.com")
         }
     }
 
@@ -119,7 +119,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
             path = "/v1/operational-webhook/endpoint",
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -187,7 +187,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
             path = "/v1/operational-webhook/endpoint/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -258,7 +258,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
             path = "/v1/operational-webhook/endpoint/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -329,7 +329,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
             path = "/v1/operational-webhook/endpoint/{id}/headers".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -400,7 +400,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
             path = "/v1/operational-webhook/endpoint/{id}/secret".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -468,7 +468,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
             path = "/v1/operational-webhook/endpoint",
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -540,7 +540,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
             path = "/v1/operational-webhook/endpoint/{id}/secret/rotate".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -615,7 +615,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
             path = "/v1/operational-webhook/endpoint/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }
@@ -687,7 +687,7 @@ class WebhookEndpointApi(basePath: kotlin.String = defaultBasePath, client: Call
             path = "/v1/operational-webhook/endpoint/{id}/headers".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = false,
+            requiresAuthentication = true,
             body = localVariableBody
         )
     }

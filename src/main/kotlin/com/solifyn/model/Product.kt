@@ -33,6 +33,9 @@ import com.squareup.moshi.JsonClass
  * @param discount Discount value as a percentage or fixed amount.
  * @param hasLicenseKey Indicates if the product issues a cryptographically secure software license key upon checkout completion.
  * @param hasDigitalDelivery Whether the product includes digital file downloads upon purchase.
+ * @param hasGithubAccess Whether the product includes GitHub repository access.
+ * @param githubRepo GitHub repository to grant access to (format: owner/repo).
+ * @param githubPermission GitHub collaborator permission level.
  * @param isTaxInclusive Whether the product price already includes applicable sales taxes.
  * @param billingPeriod The subscription billing cycle interval in days (for subscription products).
  * @param trialPeriodDays Trial duration in days for subscription products.
@@ -103,6 +106,18 @@ data class Product (
     /* Whether the product includes digital file downloads upon purchase. */
     @Json(name = "hasDigitalDelivery")
     val hasDigitalDelivery: kotlin.Boolean,
+
+    /* Whether the product includes GitHub repository access. */
+    @Json(name = "hasGithubAccess")
+    val hasGithubAccess: kotlin.Boolean,
+
+    /* GitHub repository to grant access to (format: owner/repo). */
+    @Json(name = "githubRepo")
+    val githubRepo: kotlin.String,
+
+    /* GitHub collaborator permission level. */
+    @Json(name = "githubPermission")
+    val githubPermission: Product.GithubPermission,
 
     /* Whether the product price already includes applicable sales taxes. */
     @Json(name = "isTaxInclusive")
@@ -216,6 +231,19 @@ data class Product (
         @Json(name = "usage_based") usage_based("usage_based"),
         @Json(name = "one_time") one_time("one_time"),
         @Json(name = "renewal") renewal("renewal");
+    }
+    /**
+     * GitHub collaborator permission level.
+     *
+     * Values: pull,triage,push,maintain,admin
+     */
+    @JsonClass(generateAdapter = false)
+    enum class GithubPermission(val value: kotlin.String) {
+        @Json(name = "pull") pull("pull"),
+        @Json(name = "triage") triage("triage"),
+        @Json(name = "push") push("push"),
+        @Json(name = "maintain") maintain("maintain"),
+        @Json(name = "admin") admin("admin");
     }
 
 }

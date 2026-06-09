@@ -41,7 +41,7 @@ This runs all tests and packages the library.
 <a id="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 | Class | Method | HTTP request | Description |
 | ------------ | ------------- | ------------- | ------------- |
@@ -99,6 +99,12 @@ All URIs are relative to *http://localhost:8000*
 | *DisputesApi* | [**disputesSubmitEvidence**](docs/DisputesApi.md#disputessubmitevidence) | **POST** /v1/transactions/disputes/{id}/submit | Submit Dispute Evidence |
 | *DisputesApi* | [**disputesUpdateEvidence**](docs/DisputesApi.md#disputesupdateevidence) | **PATCH** /v1/transactions/disputes/{id}/evidence | Update Dispute Evidence |
 | *DisputesApi* | [**disputesUploadEvidenceFile**](docs/DisputesApi.md#disputesuploadevidencefile) | **POST** /v1/transactions/disputes/upload | Upload Evidence File |
+| *EntitlementGrantsApi* | [**entitlementGrantsGet**](docs/EntitlementGrantsApi.md#entitlementgrantsget) | **GET** /v1/entitlement-grants/{id} | Retrieve Entitlement Grant |
+| *EntitlementGrantsApi* | [**entitlementGrantsList**](docs/EntitlementGrantsApi.md#entitlementgrantslist) | **GET** /v1/entitlement-grants | List Entitlement Grants |
+| *EntitlementGrantsApi* | [**entitlementGrantsRetry**](docs/EntitlementGrantsApi.md#entitlementgrantsretry) | **POST** /v1/entitlement-grants/{id}/retry | Retry Entitlement Grant Delivery |
+| *EntitlementGrantsApi* | [**entitlementGrantsRevoke**](docs/EntitlementGrantsApi.md#entitlementgrantsrevoke) | **POST** /v1/entitlement-grants/{id}/revoke | Manually Revoke Entitlement Grant |
+| *GitHubIntegrationApi* | [**githubGetInstallUrl**](docs/GitHubIntegrationApi.md#githubgetinstallurl) | **GET** /v1/github/install | Get GitHub App Installation URL |
+| *GitHubIntegrationApi* | [**githubListRepos**](docs/GitHubIntegrationApi.md#githublistrepos) | **GET** /v1/github/repos | List Available GitHub Repositories |
 | *LicenseApi* | [**licensesCreate**](docs/LicenseApi.md#licensescreate) | **POST** /v1/licenses | Create License Key |
 | *LicenseApi* | [**licensesDeleteInstance**](docs/LicenseApi.md#licensesdeleteinstance) | **DELETE** /v1/licenses/instances/{instanceId} | Force Delete Instance |
 | *LicenseApi* | [**licensesGet**](docs/LicenseApi.md#licensesget) | **GET** /v1/licenses/{id} | Get License Key |
@@ -223,6 +229,8 @@ All URIs are relative to *http://localhost:8000*
  - [com.solifyn.model.DisputeFileUpload](docs/DisputeFileUpload.md)
  - [com.solifyn.model.DisputeList](docs/DisputeList.md)
  - [com.solifyn.model.DisputeListMetaDto](docs/DisputeListMetaDto.md)
+ - [com.solifyn.model.EntitlementGrantResponseDto](docs/EntitlementGrantResponseDto.md)
+ - [com.solifyn.model.GithubReposResponseDto](docs/GithubReposResponseDto.md)
  - [com.solifyn.model.Instance](docs/Instance.md)
  - [com.solifyn.model.Invoice](docs/Invoice.md)
  - [com.solifyn.model.License](docs/License.md)
@@ -290,6 +298,7 @@ All URIs are relative to *http://localhost:8000*
  - [com.solifyn.model.SubscriptionUserDto](docs/SubscriptionUserDto.md)
  - [com.solifyn.model.SubscriptionsAction201Response](docs/SubscriptionsAction201Response.md)
  - [com.solifyn.model.SupportedCurrenciesResponseDto](docs/SupportedCurrenciesResponseDto.md)
+ - [com.solifyn.model.SyncLoginDto](docs/SyncLoginDto.md)
  - [com.solifyn.model.UpdateCheckoutLinkDto](docs/UpdateCheckoutLinkDto.md)
  - [com.solifyn.model.UpdateCollectionDto](docs/UpdateCollectionDto.md)
  - [com.solifyn.model.UpdateCollectionProductDto](docs/UpdateCollectionProductDto.md)

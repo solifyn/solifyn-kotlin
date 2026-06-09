@@ -1,6 +1,6 @@
 # WebhookEndpointApi
 
-All URIs are relative to *http://localhost:8000*
+All URIs are relative to *https://api.solifyn.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -52,7 +52,9 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -95,7 +97,9 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -139,7 +143,9 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -183,7 +189,9 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -227,7 +235,9 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -268,7 +278,9 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -313,7 +325,9 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -359,7 +373,9 @@ try {
 
 ### Authorization
 
-No authorization required
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -404,7 +420,9 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 

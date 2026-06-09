@@ -19,12 +19,7 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import com.solifyn.model.CreateCustomerDto
-import com.solifyn.model.CustomerListResponseDto
-import com.solifyn.model.CustomerMessageResponseDto
-import com.solifyn.model.CustomerResponseDto
-import com.solifyn.model.CustomerSharedInviteResponseDto
-import com.solifyn.model.UpdateCustomerDto
+import com.solifyn.model.EntitlementGrantResponseDto
 
 import com.squareup.moshi.Json
 
@@ -42,7 +37,7 @@ import com.solifyn.infrastructure.ResponseType
 import com.solifyn.infrastructure.Success
 import com.solifyn.infrastructure.toMultiValue
 
-class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -51,10 +46,10 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * Create Customer
-     * Add/upsert a new customer profile under the current business context.
-     * @param createCustomerDto 
-     * @return CustomerResponseDto
+     * Retrieve Entitlement Grant
+     * Retrieve details of a specific entitlement grant.
+     * @param id The unique grant ID
+     * @return EntitlementGrantResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -63,11 +58,11 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customersCreate(createCustomerDto: CreateCustomerDto) : CustomerResponseDto {
-        val localVarResponse = customersCreateWithHttpInfo(createCustomerDto = createCustomerDto)
+    fun entitlementGrantsGet(id: kotlin.String) : EntitlementGrantResponseDto {
+        val localVarResponse = entitlementGrantsGetWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementGrantResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -82,173 +77,30 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * Create Customer
-     * Add/upsert a new customer profile under the current business context.
-     * @param createCustomerDto 
-     * @return ApiResponse<CustomerResponseDto?>
+     * Retrieve Entitlement Grant
+     * Retrieve details of a specific entitlement grant.
+     * @param id The unique grant ID
+     * @return ApiResponse<EntitlementGrantResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun customersCreateWithHttpInfo(createCustomerDto: CreateCustomerDto) : ApiResponse<CustomerResponseDto?> {
-        val localVariableConfig = customersCreateRequestConfig(createCustomerDto = createCustomerDto)
+    fun entitlementGrantsGetWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementGrantResponseDto?> {
+        val localVariableConfig = entitlementGrantsGetRequestConfig(id = id)
 
-        return request<CreateCustomerDto, CustomerResponseDto>(
+        return request<Unit, EntitlementGrantResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation customersCreate
+     * To obtain the request config of the operation entitlementGrantsGet
      *
-     * @param createCustomerDto 
+     * @param id The unique grant ID
      * @return RequestConfig
      */
-    fun customersCreateRequestConfig(createCustomerDto: CreateCustomerDto) : RequestConfig<CreateCustomerDto> {
-        val localVariableBody = createCustomerDto
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Content-Type"] = "application/json"
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/v1/customers",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * Generate Shared Invite
-     * Generate a short-lived token granting temporary customer self-service billing page access.
-     * @param id Customer ID
-     * @return CustomerSharedInviteResponseDto
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customersGenerateInvite(id: kotlin.String) : CustomerSharedInviteResponseDto {
-        val localVarResponse = customersGenerateInviteWithHttpInfo(id = id)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerSharedInviteResponseDto
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * Generate Shared Invite
-     * Generate a short-lived token granting temporary customer self-service billing page access.
-     * @param id Customer ID
-     * @return ApiResponse<CustomerSharedInviteResponseDto?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun customersGenerateInviteWithHttpInfo(id: kotlin.String) : ApiResponse<CustomerSharedInviteResponseDto?> {
-        val localVariableConfig = customersGenerateInviteRequestConfig(id = id)
-
-        return request<Unit, CustomerSharedInviteResponseDto>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation customersGenerateInvite
-     *
-     * @param id Customer ID
-     * @return RequestConfig
-     */
-    fun customersGenerateInviteRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/v1/customers/{id}/share".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * Retrieve Customer
-     * Retrieve details of a customer profile by ID.
-     * @param id Customer ID
-     * @return CustomerResponseDto
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customersGet(id: kotlin.String) : CustomerResponseDto {
-        val localVarResponse = customersGetWithHttpInfo(id = id)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerResponseDto
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * Retrieve Customer
-     * Retrieve details of a customer profile by ID.
-     * @param id Customer ID
-     * @return ApiResponse<CustomerResponseDto?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun customersGetWithHttpInfo(id: kotlin.String) : ApiResponse<CustomerResponseDto?> {
-        val localVariableConfig = customersGetRequestConfig(id = id)
-
-        return request<Unit, CustomerResponseDto>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation customersGet
-     *
-     * @param id Customer ID
-     * @return RequestConfig
-     */
-    fun customersGetRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun entitlementGrantsGetRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -256,7 +108,7 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/v1/customers/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            path = "/v1/entitlement-grants/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -265,9 +117,10 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * List Customers
-     * Retrieve all customers associated with the current active business.
-     * @return CustomerListResponseDto
+     * List Entitlement Grants
+     * Retrieve all GitHub repository entitlement grants for the active business.
+     * @param status Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
+     * @return kotlin.collections.List<EntitlementGrantResponseDto>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -276,11 +129,11 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customersList() : CustomerListResponseDto {
-        val localVarResponse = customersListWithHttpInfo()
+    fun entitlementGrantsList(status: kotlin.String? = null) : kotlin.collections.List<EntitlementGrantResponseDto> {
+        val localVarResponse = entitlementGrantsListWithHttpInfo(status = status)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerListResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<EntitlementGrantResponseDto>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -295,36 +148,114 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * List Customers
-     * Retrieve all customers associated with the current active business.
-     * @return ApiResponse<CustomerListResponseDto?>
+     * List Entitlement Grants
+     * Retrieve all GitHub repository entitlement grants for the active business.
+     * @param status Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
+     * @return ApiResponse<kotlin.collections.List<EntitlementGrantResponseDto>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun customersListWithHttpInfo() : ApiResponse<CustomerListResponseDto?> {
-        val localVariableConfig = customersListRequestConfig()
+    fun entitlementGrantsListWithHttpInfo(status: kotlin.String?) : ApiResponse<kotlin.collections.List<EntitlementGrantResponseDto>?> {
+        val localVariableConfig = entitlementGrantsListRequestConfig(status = status)
 
-        return request<Unit, CustomerListResponseDto>(
+        return request<Unit, kotlin.collections.List<EntitlementGrantResponseDto>>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation customersList
+     * To obtain the request config of the operation entitlementGrantsList
      *
+     * @param status Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
      * @return RequestConfig
      */
-    fun customersListRequestConfig() : RequestConfig<Unit> {
+    fun entitlementGrantsListRequestConfig(status: kotlin.String?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (status != null) {
+                    put("status", listOf(status.toString()))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/v1/entitlement-grants",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Retry Entitlement Grant Delivery
+     * Attempts to re-invite the collaborator if GitHub username is already connected, or resets the OAuth URL redirect.
+     * @param id The unique grant ID
+     * @return EntitlementGrantResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun entitlementGrantsRetry(id: kotlin.String) : EntitlementGrantResponseDto {
+        val localVarResponse = entitlementGrantsRetryWithHttpInfo(id = id)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementGrantResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Retry Entitlement Grant Delivery
+     * Attempts to re-invite the collaborator if GitHub username is already connected, or resets the OAuth URL redirect.
+     * @param id The unique grant ID
+     * @return ApiResponse<EntitlementGrantResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun entitlementGrantsRetryWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementGrantResponseDto?> {
+        val localVariableConfig = entitlementGrantsRetryRequestConfig(id = id)
+
+        return request<Unit, EntitlementGrantResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation entitlementGrantsRetry
+     *
+     * @param id The unique grant ID
+     * @return RequestConfig
+     */
+    fun entitlementGrantsRetryRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/v1/customers",
+            method = RequestMethod.POST,
+            path = "/v1/entitlement-grants/{id}/retry".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -333,11 +264,10 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * Update Customer
-     * Update name, phone, or metadata of an existing customer profile.
-     * @param id Customer ID
-     * @param updateCustomerDto 
-     * @return CustomerMessageResponseDto
+     * Manually Revoke Entitlement Grant
+     * Manually remove the customer collaborator access from the repository and revoke the grant.
+     * @param id The unique grant ID
+     * @return EntitlementGrantResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -346,11 +276,11 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun customersUpdate(id: kotlin.String, updateCustomerDto: UpdateCustomerDto) : CustomerMessageResponseDto {
-        val localVarResponse = customersUpdateWithHttpInfo(id = id, updateCustomerDto = updateCustomerDto)
+    fun entitlementGrantsRevoke(id: kotlin.String) : EntitlementGrantResponseDto {
+        val localVarResponse = entitlementGrantsRevokeWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as CustomerMessageResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementGrantResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -365,41 +295,38 @@ class CustomersApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
     }
 
     /**
-     * Update Customer
-     * Update name, phone, or metadata of an existing customer profile.
-     * @param id Customer ID
-     * @param updateCustomerDto 
-     * @return ApiResponse<CustomerMessageResponseDto?>
+     * Manually Revoke Entitlement Grant
+     * Manually remove the customer collaborator access from the repository and revoke the grant.
+     * @param id The unique grant ID
+     * @return ApiResponse<EntitlementGrantResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun customersUpdateWithHttpInfo(id: kotlin.String, updateCustomerDto: UpdateCustomerDto) : ApiResponse<CustomerMessageResponseDto?> {
-        val localVariableConfig = customersUpdateRequestConfig(id = id, updateCustomerDto = updateCustomerDto)
+    fun entitlementGrantsRevokeWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementGrantResponseDto?> {
+        val localVariableConfig = entitlementGrantsRevokeRequestConfig(id = id)
 
-        return request<UpdateCustomerDto, CustomerMessageResponseDto>(
+        return request<Unit, EntitlementGrantResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation customersUpdate
+     * To obtain the request config of the operation entitlementGrantsRevoke
      *
-     * @param id Customer ID
-     * @param updateCustomerDto 
+     * @param id The unique grant ID
      * @return RequestConfig
      */
-    fun customersUpdateRequestConfig(id: kotlin.String, updateCustomerDto: UpdateCustomerDto) : RequestConfig<UpdateCustomerDto> {
-        val localVariableBody = updateCustomerDto
+    fun entitlementGrantsRevokeRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Content-Type"] = "application/json"
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
-            method = RequestMethod.PATCH,
-            path = "/v1/customers/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            method = RequestMethod.POST,
+            path = "/v1/entitlement-grants/{id}/revoke".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

@@ -19,8 +19,7 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import com.solifyn.model.OrderRefundCreate
-import com.solifyn.model.Refund
+import com.solifyn.model.GithubReposResponseDto
 
 import com.squareup.moshi.Json
 
@@ -38,7 +37,7 @@ import com.solifyn.infrastructure.ResponseType
 import com.solifyn.infrastructure.Success
 import com.solifyn.infrastructure.toMultiValue
 
-class RefundsChargebacksApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class GitHubIntegrationApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -47,10 +46,9 @@ class RefundsChargebacksApi(basePath: kotlin.String = defaultBasePath, client: C
     }
 
     /**
-     * Create Refund
-     * Initiate a full or partial refund for a specific payment/order.
-     * @param id The unique order/payment ID.
-     * @param orderRefundCreate 
+     * Get GitHub App Installation URL
+     * Generates the URL to install the system-wide GitHub App onto the merchant&#39;s GitHub account/org.
+     * @param productId Optional Product ID to redirect back to after installation (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -59,8 +57,8 @@ class RefundsChargebacksApi(basePath: kotlin.String = defaultBasePath, client: C
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun refundsCreate(id: kotlin.String, orderRefundCreate: OrderRefundCreate) : Unit {
-        val localVarResponse = refundsCreateWithHttpInfo(id = id, orderRefundCreate = orderRefundCreate)
+    fun githubGetInstallUrl(productId: kotlin.String? = null) : Unit {
+        val localVarResponse = githubGetInstallUrlWithHttpInfo(productId = productId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -78,39 +76,41 @@ class RefundsChargebacksApi(basePath: kotlin.String = defaultBasePath, client: C
     }
 
     /**
-     * Create Refund
-     * Initiate a full or partial refund for a specific payment/order.
-     * @param id The unique order/payment ID.
-     * @param orderRefundCreate 
+     * Get GitHub App Installation URL
+     * Generates the URL to install the system-wide GitHub App onto the merchant&#39;s GitHub account/org.
+     * @param productId Optional Product ID to redirect back to after installation (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun refundsCreateWithHttpInfo(id: kotlin.String, orderRefundCreate: OrderRefundCreate) : ApiResponse<Unit?> {
-        val localVariableConfig = refundsCreateRequestConfig(id = id, orderRefundCreate = orderRefundCreate)
+    fun githubGetInstallUrlWithHttpInfo(productId: kotlin.String?) : ApiResponse<Unit?> {
+        val localVariableConfig = githubGetInstallUrlRequestConfig(productId = productId)
 
-        return request<OrderRefundCreate, Unit>(
+        return request<Unit, Unit>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation refundsCreate
+     * To obtain the request config of the operation githubGetInstallUrl
      *
-     * @param id The unique order/payment ID.
-     * @param orderRefundCreate 
+     * @param productId Optional Product ID to redirect back to after installation (optional)
      * @return RequestConfig
      */
-    fun refundsCreateRequestConfig(id: kotlin.String, orderRefundCreate: OrderRefundCreate) : RequestConfig<OrderRefundCreate> {
-        val localVariableBody = orderRefundCreate
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+    fun githubGetInstallUrlRequestConfig(productId: kotlin.String?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (productId != null) {
+                    put("productId", listOf(productId.toString()))
+                }
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Content-Type"] = "application/json"
         
         return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/v1/orders/{id}/refund".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            method = RequestMethod.GET,
+            path = "/v1/github/install",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -119,10 +119,9 @@ class RefundsChargebacksApi(basePath: kotlin.String = defaultBasePath, client: C
     }
 
     /**
-     * Retrieve Refund details
-     * Get parameters of a specific processed refund by database ID.
-     * @param id Refund ID
-     * @return Refund
+     * List Available GitHub Repositories
+     * Retrieves all repositories accessible by the merchant&#39;s installed GitHub App.
+     * @return kotlin.collections.List<GithubReposResponseDto>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -131,11 +130,11 @@ class RefundsChargebacksApi(basePath: kotlin.String = defaultBasePath, client: C
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun refundsGet(id: kotlin.String) : Refund {
-        val localVarResponse = refundsGetWithHttpInfo(id = id)
+    fun githubListRepos() : kotlin.collections.List<GithubReposResponseDto> {
+        val localVarResponse = githubListReposWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as Refund
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<GithubReposResponseDto>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -150,30 +149,28 @@ class RefundsChargebacksApi(basePath: kotlin.String = defaultBasePath, client: C
     }
 
     /**
-     * Retrieve Refund details
-     * Get parameters of a specific processed refund by database ID.
-     * @param id Refund ID
-     * @return ApiResponse<Refund?>
+     * List Available GitHub Repositories
+     * Retrieves all repositories accessible by the merchant&#39;s installed GitHub App.
+     * @return ApiResponse<kotlin.collections.List<GithubReposResponseDto>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun refundsGetWithHttpInfo(id: kotlin.String) : ApiResponse<Refund?> {
-        val localVariableConfig = refundsGetRequestConfig(id = id)
+    fun githubListReposWithHttpInfo() : ApiResponse<kotlin.collections.List<GithubReposResponseDto>?> {
+        val localVariableConfig = githubListReposRequestConfig()
 
-        return request<Unit, Refund>(
+        return request<Unit, kotlin.collections.List<GithubReposResponseDto>>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation refundsGet
+     * To obtain the request config of the operation githubListRepos
      *
-     * @param id Refund ID
      * @return RequestConfig
      */
-    fun refundsGetRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun githubListReposRequestConfig() : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -181,75 +178,7 @@ class RefundsChargebacksApi(basePath: kotlin.String = defaultBasePath, client: C
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/v1/refunds/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * List Refunds
-     * Retrieve a list of processed refunds and chargeback transactions.
-     * @return kotlin.collections.List<Refund>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun refundsList() : kotlin.collections.List<Refund> {
-        val localVarResponse = refundsListWithHttpInfo()
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<Refund>
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * List Refunds
-     * Retrieve a list of processed refunds and chargeback transactions.
-     * @return ApiResponse<kotlin.collections.List<Refund>?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun refundsListWithHttpInfo() : ApiResponse<kotlin.collections.List<Refund>?> {
-        val localVariableConfig = refundsListRequestConfig()
-
-        return request<Unit, kotlin.collections.List<Refund>>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation refundsList
-     *
-     * @return RequestConfig
-     */
-    fun refundsListRequestConfig() : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/v1/refunds",
+            path = "/v1/github/repos",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
