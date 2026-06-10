@@ -92,11 +92,11 @@ data class Subscription (
 
     /* Start timestamp of the current renewal period */
     @Json(name = "renewal_period_start")
-    val renewalPeriodStart: kotlin.Any?,
+    val renewalPeriodStart: kotlin.Any,
 
     /* End timestamp of the current renewal period */
     @Json(name = "renewal_period_end")
-    val renewalPeriodEnd: kotlin.Any?,
+    val renewalPeriodEnd: kotlin.Any,
 
     /* Whether the subscription is set to cancel at the end of the billing period */
     @Json(name = "cancel_at_period_end")
@@ -104,15 +104,15 @@ data class Subscription (
 
     /* The cancel option details */
     @Json(name = "cancel_option")
-    val cancelOption: kotlin.Any?,
+    val cancelOption: kotlin.Any,
 
     /* The reason for cancellation */
     @Json(name = "cancellation_reason")
-    val cancellationReason: kotlin.Any?,
+    val cancellationReason: kotlin.Any,
 
     /* Timestamp when the subscription was canceled */
     @Json(name = "canceled_at")
-    val canceledAt: kotlin.Any?,
+    val canceledAt: kotlin.Any,
 
     /* The currency used for payments */
     @Json(name = "currency")
@@ -128,7 +128,7 @@ data class Subscription (
 
     /* The promo code applied to the subscription */
     @Json(name = "promo_code")
-    val promoCode: kotlin.Any?,
+    val promoCode: kotlin.Any,
 
     /* The product associated with the subscription */
     @Json(name = "product")
@@ -136,7 +136,7 @@ data class Subscription (
 
     /* The license key associated with this subscription */
     @Json(name = "license_key")
-    val licenseKey: kotlin.Any?,
+    val licenseKey: kotlin.Any,
 
     /* Additional metadata for the subscription */
     @Json(name = "metadata")

@@ -34,6 +34,10 @@ import com.squareup.moshi.JsonClass
  * @param githubRepo Target GitHub repository (owner/repo) if type is GITHUB.
  * @param githubPermission GitHub access permission level if type is GITHUB.
  * @param githubUsername The connected customer GitHub username.
+ * @param discordGuildId Target Discord Guild ID if type is DISCORD.
+ * @param discordRoleId Target Discord Role ID if type is DISCORD.
+ * @param discordUsername The connected customer Discord username.
+ * @param discordUserId The connected customer Discord user ID.
  * @param oauthUrl OAuth URL to redirect the customer to.
  * @param errorDetails Error message if invitation delivery failed.
  * @param metadata Platform-specific metadata.
@@ -89,6 +93,22 @@ data class EntitlementGrantResponseDto (
     /* The connected customer GitHub username. */
     @Json(name = "githubUsername")
     val githubUsername: kotlin.String? = null,
+
+    /* Target Discord Guild ID if type is DISCORD. */
+    @Json(name = "discordGuildId")
+    val discordGuildId: kotlin.String? = null,
+
+    /* Target Discord Role ID if type is DISCORD. */
+    @Json(name = "discordRoleId")
+    val discordRoleId: kotlin.String? = null,
+
+    /* The connected customer Discord username. */
+    @Json(name = "discordUsername")
+    val discordUsername: kotlin.String? = null,
+
+    /* The connected customer Discord user ID. */
+    @Json(name = "discordUserId")
+    val discordUserId: kotlin.String? = null,
 
     /* OAuth URL to redirect the customer to. */
     @Json(name = "oauthUrl")

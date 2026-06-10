@@ -36,6 +36,9 @@ import com.squareup.moshi.JsonClass
  * @param hasGithubAccess Whether the product includes GitHub repository access.
  * @param githubRepo GitHub repository to grant access to (format: owner/repo).
  * @param githubPermission GitHub collaborator permission level.
+ * @param hasDiscordAccess Whether the product includes Discord role access.
+ * @param discordGuildId Discord Guild (Server) ID to grant access to.
+ * @param discordRoleId Discord Role ID to assign to the user.
  * @param isTaxInclusive Whether the product price already includes applicable sales taxes.
  * @param billingPeriod The subscription billing cycle interval in days (for subscription products).
  * @param trialPeriodDays Trial duration in days for subscription products.
@@ -85,7 +88,7 @@ data class Product (
 
     /* URL of the product cover image. */
     @Json(name = "imageUrl")
-    val imageUrl: kotlin.String?,
+    val imageUrl: kotlin.String,
 
     /* The tax classification for the product. */
     @Json(name = "taxCategory")
@@ -97,7 +100,7 @@ data class Product (
 
     /* Discount value as a percentage or fixed amount. */
     @Json(name = "discount")
-    val discount: java.math.BigDecimal?,
+    val discount: java.math.BigDecimal,
 
     /* Indicates if the product issues a cryptographically secure software license key upon checkout completion. */
     @Json(name = "hasLicenseKey")
@@ -113,11 +116,23 @@ data class Product (
 
     /* GitHub repository to grant access to (format: owner/repo). */
     @Json(name = "githubRepo")
-    val githubRepo: kotlin.String?,
+    val githubRepo: kotlin.String,
 
     /* GitHub collaborator permission level. */
     @Json(name = "githubPermission")
-    val githubPermission: Product.GithubPermission?,
+    val githubPermission: Product.GithubPermission,
+
+    /* Whether the product includes Discord role access. */
+    @Json(name = "hasDiscordAccess")
+    val hasDiscordAccess: kotlin.Boolean,
+
+    /* Discord Guild (Server) ID to grant access to. */
+    @Json(name = "discordGuildId")
+    val discordGuildId: kotlin.String,
+
+    /* Discord Role ID to assign to the user. */
+    @Json(name = "discordRoleId")
+    val discordRoleId: kotlin.String,
 
     /* Whether the product price already includes applicable sales taxes. */
     @Json(name = "isTaxInclusive")
@@ -125,19 +140,19 @@ data class Product (
 
     /* The subscription billing cycle interval in days (for subscription products). */
     @Json(name = "billingPeriod")
-    val billingPeriod: kotlin.Int?,
+    val billingPeriod: kotlin.Int,
 
     /* Trial duration in days for subscription products. */
     @Json(name = "trialPeriodDays")
-    val trialPeriodDays: kotlin.Int?,
+    val trialPeriodDays: kotlin.Int,
 
     /* Automatic expiration period in days for the subscription entitlement. */
     @Json(name = "expirationDays")
-    val expirationDays: kotlin.Int?,
+    val expirationDays: kotlin.Int,
 
     /* Custom text displayed on customer credit card statements for purchases of this product. */
     @Json(name = "statementDescriptor")
-    val statementDescriptor: kotlin.String?,
+    val statementDescriptor: kotlin.String,
 
     /* Indicates if customers are allowed to enter a custom pricing amount at checkout. */
     @Json(name = "payWhatYouWant")
@@ -145,15 +160,15 @@ data class Product (
 
     /* Custom developer metadata key-value pairs associated with the product. */
     @Json(name = "metadata")
-    val metadata: kotlin.collections.Map<kotlin.String, kotlin.String>?,
+    val metadata: kotlin.collections.Map<kotlin.String, kotlin.String>,
 
     /* Custom form field questions to ask the customer during checkout. */
     @Json(name = "customFields")
-    val customFields: kotlin.collections.List<kotlin.Any>?,
+    val customFields: kotlin.collections.List<kotlin.Any>,
 
     /* Available stock quantity, or null for unlimited inventory. */
     @Json(name = "stock")
-    val stock: kotlin.Int?,
+    val stock: kotlin.Int,
 
     /* Maximum number of simultaneous active instances/devices allowed per issued license key (applicable if hasLicenseKey is true). */
     @Json(name = "activationLimit")
@@ -181,23 +196,23 @@ data class Product (
 
     /* Optional brand identifier. */
     @Json(name = "brandId")
-    val brandId: kotlin.String?,
+    val brandId: kotlin.String,
 
     /* Secure link for digital delivery. */
     @Json(name = "digitalLink")
-    val digitalLink: kotlin.String?,
+    val digitalLink: kotlin.String,
 
     /* Special instructions provided upon purchase. */
     @Json(name = "instructions")
-    val instructions: kotlin.String?,
+    val instructions: kotlin.String,
 
     /* Custom message displayed when a license key is activated. */
     @Json(name = "activationMessage")
-    val activationMessage: kotlin.String?,
+    val activationMessage: kotlin.String,
 
     /* Number of hours until the license key expires. */
     @Json(name = "expiryHours")
-    val expiryHours: kotlin.Int?,
+    val expiryHours: kotlin.Int,
 
     /* The unique identifier of the business owning this product. */
     @Json(name = "businessId")

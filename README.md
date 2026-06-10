@@ -87,6 +87,8 @@ All URIs are relative to *https://api.solifyn.com*
 | *DigitalFileApi* | [**digitalFileControllerCreate**](docs/DigitalFileApi.md#digitalfilecontrollercreate) | **POST** /v1/digital-files |  |
 | *DigitalFileApi* | [**digitalFileControllerFindAll**](docs/DigitalFileApi.md#digitalfilecontrollerfindall) | **GET** /v1/digital-files |  |
 | *DigitalFileApi* | [**digitalFileControllerRemove**](docs/DigitalFileApi.md#digitalfilecontrollerremove) | **DELETE** /v1/digital-files/{id} |  |
+| *DiscordIntegrationApi* | [**discordGetInstallUrl**](docs/DiscordIntegrationApi.md#discordgetinstallurl) | **GET** /v1/discord/install | Get Discord Bot Installation URL |
+| *DiscordIntegrationApi* | [**discordListRoles**](docs/DiscordIntegrationApi.md#discordlistroles) | **GET** /v1/discord/roles | List Guild Discord Roles |
 | *DiscountsApi* | [**discountsCreate**](docs/DiscountsApi.md#discountscreate) | **POST** /v1/discounts | Create Discount |
 | *DiscountsApi* | [**discountsDelete**](docs/DiscountsApi.md#discountsdelete) | **DELETE** /v1/discounts/{id} | Delete Discount |
 | *DiscountsApi* | [**discountsGet**](docs/DiscountsApi.md#discountsget) | **GET** /v1/discounts/{id} | Retrieve Discount |
@@ -217,6 +219,7 @@ All URIs are relative to *https://api.solifyn.com*
  - [com.solifyn.model.CustomerResponseDto](docs/CustomerResponseDto.md)
  - [com.solifyn.model.CustomerSharedInviteResponseDto](docs/CustomerSharedInviteResponseDto.md)
  - [com.solifyn.model.DashboardStatsDto](docs/DashboardStatsDto.md)
+ - [com.solifyn.model.DiscordRolesResponseDto](docs/DiscordRolesResponseDto.md)
  - [com.solifyn.model.Discount](docs/Discount.md)
  - [com.solifyn.model.DiscountCreate](docs/DiscountCreate.md)
  - [com.solifyn.model.DiscountUpdate](docs/DiscountUpdate.md)

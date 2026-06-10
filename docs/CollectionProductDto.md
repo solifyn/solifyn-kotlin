@@ -18,6 +18,9 @@
 | **hasGithubAccess** | **kotlin.Boolean** | Whether the product includes GitHub repository access. |  |
 | **githubRepo** | **kotlin.String** | GitHub repository to grant access to (format: owner/repo). |  |
 | **githubPermission** | [**inline**](#GithubPermission) | GitHub collaborator permission level. |  |
+| **hasDiscordAccess** | **kotlin.Boolean** | Whether the product includes Discord role access. |  |
+| **discordGuildId** | **kotlin.String** | Discord Guild (Server) ID to grant access to. |  |
+| **discordRoleId** | **kotlin.String** | Discord Role ID to assign to the user. |  |
 | **isTaxInclusive** | **kotlin.Boolean** | Whether the product price already includes applicable sales taxes. |  |
 | **billingPeriod** | **kotlin.Int** | The subscription billing cycle interval in days (for subscription products). |  |
 | **trialPeriodDays** | **kotlin.Int** | Trial duration in days for subscription products. |  |

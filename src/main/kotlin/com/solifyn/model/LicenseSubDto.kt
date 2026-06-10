@@ -45,13 +45,13 @@ data class LicenseSubDto (
     val status: kotlin.String,
 
     @Json(name = "activationLimit")
-    val activationLimit: java.math.BigDecimal?,
+    val activationLimit: java.math.BigDecimal,
 
     @Json(name = "activationMessage")
-    val activationMessage: kotlin.String?,
+    val activationMessage: kotlin.String,
 
     @Json(name = "expiresAt")
-    val expiresAt: kotlin.String?,
+    val expiresAt: kotlin.String,
 
     @Json(name = "product")
     val product: ProductSubDto? = null

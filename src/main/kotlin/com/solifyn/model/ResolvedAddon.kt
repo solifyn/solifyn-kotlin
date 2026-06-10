@@ -41,7 +41,7 @@ data class ResolvedAddon (
 
     /* URL of the addon image */
     @Json(name = "imageUrl")
-    val imageUrl: kotlin.Any?,
+    val imageUrl: kotlin.Any,
 
     /* The purchased quantity of the addon */
     @Json(name = "quantity")

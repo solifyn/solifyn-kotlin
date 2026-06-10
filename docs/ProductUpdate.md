@@ -16,6 +16,9 @@
 | **hasGithubAccess** | **kotlin.Boolean** | Whether the purchase includes GitHub repository access. |  [optional] |
 | **githubRepo** | **kotlin.String** | GitHub repository to grant access to (format: owner/repo). |  [optional] |
 | **githubPermission** | [**inline**](#GithubPermission) | GitHub collaborator permission level. |  [optional] |
+| **hasDiscordAccess** | **kotlin.Boolean** | Whether the purchase includes Discord server role access. |  [optional] |
+| **discordGuildId** | **kotlin.String** | Discord Guild (Server) ID to grant access to. |  [optional] |
+| **discordRoleId** | **kotlin.String** | Discord Role ID to assign to the user. |  [optional] |
 | **isTaxInclusive** | **kotlin.Boolean** | Whether tax is included in the base price. |  [optional] |
 | **activationLimit** | **kotlin.Int** | Maximum concurrent activated instances allowed per license key. |  [optional] |
 | **brandId** | **kotlin.String** | Brand id for the product, if not provided will default to primary brand. |  [optional] |

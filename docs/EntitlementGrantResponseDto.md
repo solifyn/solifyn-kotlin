@@ -16,6 +16,10 @@
 | **githubRepo** | **kotlin.String** | Target GitHub repository (owner/repo) if type is GITHUB. |  [optional] |
 | **githubPermission** | **kotlin.String** | GitHub access permission level if type is GITHUB. |  [optional] |
 | **githubUsername** | **kotlin.String** | The connected customer GitHub username. |  [optional] |
+| **discordGuildId** | **kotlin.String** | Target Discord Guild ID if type is DISCORD. |  [optional] |
+| **discordRoleId** | **kotlin.String** | Target Discord Role ID if type is DISCORD. |  [optional] |
+| **discordUsername** | **kotlin.String** | The connected customer Discord username. |  [optional] |
+| **discordUserId** | **kotlin.String** | The connected customer Discord user ID. |  [optional] |
 | **oauthUrl** | **kotlin.String** | OAuth URL to redirect the customer to. |  [optional] |
 | **errorDetails** | **kotlin.String** | Error message if invitation delivery failed. |  [optional] |
 | **metadata** | [**kotlin.Any**](.md) | Platform-specific metadata. |  [optional] |

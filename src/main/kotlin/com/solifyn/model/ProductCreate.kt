@@ -36,6 +36,9 @@ import com.squareup.moshi.JsonClass
  * @param hasGithubAccess Whether the purchase includes GitHub repository access.
  * @param githubRepo GitHub repository to grant access to (format: owner/repo).
  * @param githubPermission GitHub collaborator permission level.
+ * @param hasDiscordAccess Whether the purchase includes Discord server role access.
+ * @param discordGuildId Discord Guild (Server) ID to grant access to.
+ * @param discordRoleId Discord Role ID to assign to the user.
  * @param isTaxInclusive Whether tax is included in the base price.
  * @param activationLimit Maximum concurrent activated instances allowed per license key.
  * @param brandId Brand id for the product, if not provided will default to primary brand.
@@ -102,6 +105,18 @@ data class ProductCreate (
     /* GitHub collaborator permission level. */
     @Json(name = "githubPermission")
     val githubPermission: ProductCreate.GithubPermission? = null,
+
+    /* Whether the purchase includes Discord server role access. */
+    @Json(name = "hasDiscordAccess")
+    val hasDiscordAccess: kotlin.Boolean? = false,
+
+    /* Discord Guild (Server) ID to grant access to. */
+    @Json(name = "discordGuildId")
+    val discordGuildId: kotlin.String? = null,
+
+    /* Discord Role ID to assign to the user. */
+    @Json(name = "discordRoleId")
+    val discordRoleId: kotlin.String? = null,
 
     /* Whether tax is included in the base price. */
     @Json(name = "isTaxInclusive")
