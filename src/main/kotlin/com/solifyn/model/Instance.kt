@@ -44,15 +44,15 @@ data class Instance (
 
     /* The unique hardware hash or client-generated identifier of the activated device/machine. */
     @Json(name = "instanceId")
-    val instanceId: kotlin.String,
+    val instanceId: kotlin.String?,
 
     /* A human-readable display name for this instance, assigned by the client application. */
     @Json(name = "instanceName")
-    val instanceName: kotlin.String,
+    val instanceName: kotlin.String?,
 
     /* The IP address recorded at the time of activation. */
     @Json(name = "ipAddress")
-    val ipAddress: kotlin.String,
+    val ipAddress: kotlin.String?,
 
     /* Timestamp when this device instance was first activated. */
     @Json(name = "activatedAt")
@@ -60,7 +60,7 @@ data class Instance (
 
     /* Timestamp of the most recent activation heartbeat or re-activation check from this device. */
     @Json(name = "lastSeenAt")
-    val lastSeenAt: kotlin.String
+    val lastSeenAt: kotlin.String?
 
 ) {
 

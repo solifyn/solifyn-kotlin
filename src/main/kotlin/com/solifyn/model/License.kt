@@ -61,23 +61,23 @@ data class License (
 
     /* The unique ID of the product this license key is associated with. */
     @Json(name = "productId")
-    val productId: kotlin.String,
+    val productId: kotlin.String?,
 
     /* The unique payment identifier that triggered the issuance of this license key. */
     @Json(name = "paymentId")
-    val paymentId: kotlin.String,
+    val paymentId: kotlin.String?,
 
     /* The unique customer identifier (ID) who received this license key. */
     @Json(name = "customerId")
-    val customerId: kotlin.String,
+    val customerId: kotlin.String?,
 
     /* Maximum number of simultaneous active device instances allowed for this license. Null means unlimited. */
     @Json(name = "activationLimit")
-    val activationLimit: java.math.BigDecimal,
+    val activationLimit: java.math.BigDecimal?,
 
     /* Optional message displayed to the customer upon successful activation. */
     @Json(name = "activationMessage")
-    val activationMessage: kotlin.String,
+    val activationMessage: kotlin.String?,
 
     /* Running count of how many times this license key has been activated. */
     @Json(name = "instancesCount")
@@ -85,15 +85,15 @@ data class License (
 
     /* Relative expiry duration in hours from the time of issuance. */
     @Json(name = "expiryHours")
-    val expiryHours: java.math.BigDecimal,
+    val expiryHours: java.math.BigDecimal?,
 
     /* Absolute expiration timestamp. The license becomes invalid after this point. */
     @Json(name = "expiresAt")
-    val expiresAt: kotlin.String,
+    val expiresAt: kotlin.String?,
 
     /* Optional custom metadata filters associated with the license. */
     @Json(name = "filters")
-    val filters: kotlin.Any,
+    val filters: kotlin.Any?,
 
     /* Indicates if the license key is archived. */
     @Json(name = "archived")

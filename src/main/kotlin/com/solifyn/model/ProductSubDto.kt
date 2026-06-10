@@ -37,7 +37,7 @@ data class ProductSubDto (
     val name: kotlin.String,
 
     @Json(name = "digitalLink")
-    val digitalLink: kotlin.String
+    val digitalLink: kotlin.String?
 
 ) {
 

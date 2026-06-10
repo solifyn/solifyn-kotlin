@@ -42,11 +42,11 @@ data class Addon (
 
     /* Maximum quantity allowed (null if unlimited). */
     @Json(name = "maxQuantity")
-    val maxQuantity: kotlin.Any,
+    val maxQuantity: kotlin.Any?,
 
     /* Price override (null if using base product price). */
     @Json(name = "priceOverride")
-    val priceOverride: kotlin.Any,
+    val priceOverride: kotlin.Any?,
 
     /* Flag indicating if this is a seat/license addon. */
     @Json(name = "isSeatAddon")

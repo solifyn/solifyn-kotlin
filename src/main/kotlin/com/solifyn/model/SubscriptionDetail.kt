@@ -49,7 +49,7 @@ data class SubscriptionDetail (
 
     /* The core product information associated with this subscription */
     @Json(name = "product")
-    val product: SubscriptionDetailProduct
+    val product: SubscriptionDetailProduct?
 
 ) {
 

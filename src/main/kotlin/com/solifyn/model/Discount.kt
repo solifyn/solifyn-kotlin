@@ -62,7 +62,7 @@ data class Discount (
 
     /* Maximum number of times this discount code can be redeemed. Null represents unlimited usage. */
     @Json(name = "usageLimit")
-    val usageLimit: kotlin.Int,
+    val usageLimit: kotlin.Int?,
 
     /* The number of times this discount code has been successfully redeemed. */
     @Json(name = "timesUsed")
@@ -70,7 +70,7 @@ data class Discount (
 
     /* The expiration timestamp after which the discount code is no longer valid. */
     @Json(name = "expiresAt")
-    val expiresAt: java.time.OffsetDateTime,
+    val expiresAt: java.time.OffsetDateTime?,
 
     /* The current status of the discount. */
     @Json(name = "status")
