@@ -344,4 +344,3 @@ src/main/kotlin/com/solifyn/model/WebhookPaymentPayload.kt
 src/main/kotlin/com/solifyn/model/WebhookPaymentPayloadBillingAddress.kt
 src/main/kotlin/com/solifyn/model/WebhookRefundPayload.kt
 src/main/kotlin/com/solifyn/model/WebhookSubscriptionPayload.kt
-src/test/kotlin/com/solifyn/api/DefaultApiTest.kt
