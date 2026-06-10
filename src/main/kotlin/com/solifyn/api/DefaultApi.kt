@@ -21,6 +21,7 @@ import okhttp3.HttpUrl
 
 import com.solifyn.model.Order
 import com.solifyn.model.WebhookDisputePayload
+import com.solifyn.model.WebhookEntitlementGrantPayload
 import com.solifyn.model.WebhookLicensePayload
 import com.solifyn.model.WebhookPaymentPayload
 import com.solifyn.model.WebhookRefundPayload
@@ -250,6 +251,282 @@ class DefaultApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/dispute.won",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Entitlement Grant Created
+     * Occurs when a new entitlement grant is created (e.g., at checkout completion if the product has GitHub access). The collaborator invitation is pending.
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun entitlementGrantCreatedPost(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload? = null) : Unit {
+        val localVarResponse = entitlementGrantCreatedPostWithHttpInfo(webhookEntitlementGrantPayload = webhookEntitlementGrantPayload)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Entitlement Grant Created
+     * Occurs when a new entitlement grant is created (e.g., at checkout completion if the product has GitHub access). The collaborator invitation is pending.
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun entitlementGrantCreatedPostWithHttpInfo(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = entitlementGrantCreatedPostRequestConfig(webhookEntitlementGrantPayload = webhookEntitlementGrantPayload)
+
+        return request<WebhookEntitlementGrantPayload, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation entitlementGrantCreatedPost
+     *
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return RequestConfig
+     */
+    fun entitlementGrantCreatedPostRequestConfig(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload?) : RequestConfig<WebhookEntitlementGrantPayload> {
+        val localVariableBody = webhookEntitlementGrantPayload
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/entitlement_grant.created",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Entitlement Grant Delivered
+     * Occurs when the customer successfully connects their GitHub account and the collaborator invitation is successfully delivered.
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun entitlementGrantDeliveredPost(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload? = null) : Unit {
+        val localVarResponse = entitlementGrantDeliveredPostWithHttpInfo(webhookEntitlementGrantPayload = webhookEntitlementGrantPayload)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Entitlement Grant Delivered
+     * Occurs when the customer successfully connects their GitHub account and the collaborator invitation is successfully delivered.
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun entitlementGrantDeliveredPostWithHttpInfo(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = entitlementGrantDeliveredPostRequestConfig(webhookEntitlementGrantPayload = webhookEntitlementGrantPayload)
+
+        return request<WebhookEntitlementGrantPayload, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation entitlementGrantDeliveredPost
+     *
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return RequestConfig
+     */
+    fun entitlementGrantDeliveredPostRequestConfig(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload?) : RequestConfig<WebhookEntitlementGrantPayload> {
+        val localVariableBody = webhookEntitlementGrantPayload
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/entitlement_grant.delivered",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Entitlement Grant Failed
+     * Occurs when invitation delivery fails (e.g., if the user GitHub account is flagged or invitation limit is reached).
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun entitlementGrantFailedPost(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload? = null) : Unit {
+        val localVarResponse = entitlementGrantFailedPostWithHttpInfo(webhookEntitlementGrantPayload = webhookEntitlementGrantPayload)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Entitlement Grant Failed
+     * Occurs when invitation delivery fails (e.g., if the user GitHub account is flagged or invitation limit is reached).
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun entitlementGrantFailedPostWithHttpInfo(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = entitlementGrantFailedPostRequestConfig(webhookEntitlementGrantPayload = webhookEntitlementGrantPayload)
+
+        return request<WebhookEntitlementGrantPayload, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation entitlementGrantFailedPost
+     *
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return RequestConfig
+     */
+    fun entitlementGrantFailedPostRequestConfig(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload?) : RequestConfig<WebhookEntitlementGrantPayload> {
+        val localVariableBody = webhookEntitlementGrantPayload
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/entitlement_grant.failed",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Entitlement Grant Revoked
+     * Occurs when the customer access is removed from the repository (manually or automatically via subscription cancel/refund).
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun entitlementGrantRevokedPost(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload? = null) : Unit {
+        val localVarResponse = entitlementGrantRevokedPostWithHttpInfo(webhookEntitlementGrantPayload = webhookEntitlementGrantPayload)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Entitlement Grant Revoked
+     * Occurs when the customer access is removed from the repository (manually or automatically via subscription cancel/refund).
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun entitlementGrantRevokedPostWithHttpInfo(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload?) : ApiResponse<Unit?> {
+        val localVariableConfig = entitlementGrantRevokedPostRequestConfig(webhookEntitlementGrantPayload = webhookEntitlementGrantPayload)
+
+        return request<WebhookEntitlementGrantPayload, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation entitlementGrantRevokedPost
+     *
+     * @param webhookEntitlementGrantPayload  (optional)
+     * @return RequestConfig
+     */
+    fun entitlementGrantRevokedPostRequestConfig(webhookEntitlementGrantPayload: WebhookEntitlementGrantPayload?) : RequestConfig<WebhookEntitlementGrantPayload> {
+        val localVariableBody = webhookEntitlementGrantPayload
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/entitlement_grant.revoked",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

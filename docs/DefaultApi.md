@@ -7,6 +7,10 @@ All URIs are relative to *https://api.solifyn.com*
 | [**disputeCreatedPost**](DefaultApi.md#disputeCreatedPost) | **POST** /dispute.created | Dispute Created |
 | [**disputeLostPost**](DefaultApi.md#disputeLostPost) | **POST** /dispute.lost | Dispute Lost |
 | [**disputeWonPost**](DefaultApi.md#disputeWonPost) | **POST** /dispute.won | Dispute Won |
+| [**entitlementGrantCreatedPost**](DefaultApi.md#entitlementGrantCreatedPost) | **POST** /entitlement_grant.created | Entitlement Grant Created |
+| [**entitlementGrantDeliveredPost**](DefaultApi.md#entitlementGrantDeliveredPost) | **POST** /entitlement_grant.delivered | Entitlement Grant Delivered |
+| [**entitlementGrantFailedPost**](DefaultApi.md#entitlementGrantFailedPost) | **POST** /entitlement_grant.failed | Entitlement Grant Failed |
+| [**entitlementGrantRevokedPost**](DefaultApi.md#entitlementGrantRevokedPost) | **POST** /entitlement_grant.revoked | Entitlement Grant Revoked |
 | [**licenseCreatedPost**](DefaultApi.md#licenseCreatedPost) | **POST** /license.created | License Created |
 | [**licenseRevokedPost**](DefaultApi.md#licenseRevokedPost) | **POST** /license.revoked | License Revoked |
 | [**paymentCreatedPost**](DefaultApi.md#paymentCreatedPost) | **POST** /payment.created | Payment Created |
@@ -144,6 +148,194 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhookDisputePayload** | [**WebhookDisputePayload**](WebhookDisputePayload.md)|  | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a id="entitlementGrantCreatedPost"></a>
+# **entitlementGrantCreatedPost**
+> entitlementGrantCreatedPost(webhookEntitlementGrantPayload)
+
+Entitlement Grant Created
+
+Occurs when a new entitlement grant is created (e.g., at checkout completion if the product has GitHub access). The collaborator invitation is pending.
+
+### Example
+```kotlin
+// Import classes:
+//import com.solifyn.infrastructure.*
+//import com.solifyn.model.*
+
+val apiInstance = DefaultApi()
+val webhookEntitlementGrantPayload : WebhookEntitlementGrantPayload =  // WebhookEntitlementGrantPayload | 
+try {
+    apiInstance.entitlementGrantCreatedPost(webhookEntitlementGrantPayload)
+} catch (e: ClientException) {
+    println("4xx response calling DefaultApi#entitlementGrantCreatedPost")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling DefaultApi#entitlementGrantCreatedPost")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhookEntitlementGrantPayload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md)|  | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a id="entitlementGrantDeliveredPost"></a>
+# **entitlementGrantDeliveredPost**
+> entitlementGrantDeliveredPost(webhookEntitlementGrantPayload)
+
+Entitlement Grant Delivered
+
+Occurs when the customer successfully connects their GitHub account and the collaborator invitation is successfully delivered.
+
+### Example
+```kotlin
+// Import classes:
+//import com.solifyn.infrastructure.*
+//import com.solifyn.model.*
+
+val apiInstance = DefaultApi()
+val webhookEntitlementGrantPayload : WebhookEntitlementGrantPayload =  // WebhookEntitlementGrantPayload | 
+try {
+    apiInstance.entitlementGrantDeliveredPost(webhookEntitlementGrantPayload)
+} catch (e: ClientException) {
+    println("4xx response calling DefaultApi#entitlementGrantDeliveredPost")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling DefaultApi#entitlementGrantDeliveredPost")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhookEntitlementGrantPayload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md)|  | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a id="entitlementGrantFailedPost"></a>
+# **entitlementGrantFailedPost**
+> entitlementGrantFailedPost(webhookEntitlementGrantPayload)
+
+Entitlement Grant Failed
+
+Occurs when invitation delivery fails (e.g., if the user GitHub account is flagged or invitation limit is reached).
+
+### Example
+```kotlin
+// Import classes:
+//import com.solifyn.infrastructure.*
+//import com.solifyn.model.*
+
+val apiInstance = DefaultApi()
+val webhookEntitlementGrantPayload : WebhookEntitlementGrantPayload =  // WebhookEntitlementGrantPayload | 
+try {
+    apiInstance.entitlementGrantFailedPost(webhookEntitlementGrantPayload)
+} catch (e: ClientException) {
+    println("4xx response calling DefaultApi#entitlementGrantFailedPost")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling DefaultApi#entitlementGrantFailedPost")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhookEntitlementGrantPayload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md)|  | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+
+Configure ApiKeyAuth:
+    ApiClient.accessToken = ""
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a id="entitlementGrantRevokedPost"></a>
+# **entitlementGrantRevokedPost**
+> entitlementGrantRevokedPost(webhookEntitlementGrantPayload)
+
+Entitlement Grant Revoked
+
+Occurs when the customer access is removed from the repository (manually or automatically via subscription cancel/refund).
+
+### Example
+```kotlin
+// Import classes:
+//import com.solifyn.infrastructure.*
+//import com.solifyn.model.*
+
+val apiInstance = DefaultApi()
+val webhookEntitlementGrantPayload : WebhookEntitlementGrantPayload =  // WebhookEntitlementGrantPayload | 
+try {
+    apiInstance.entitlementGrantRevokedPost(webhookEntitlementGrantPayload)
+} catch (e: ClientException) {
+    println("4xx response calling DefaultApi#entitlementGrantRevokedPost")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling DefaultApi#entitlementGrantRevokedPost")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhookEntitlementGrantPayload** | [**WebhookEntitlementGrantPayload**](WebhookEntitlementGrantPayload.md)|  | [optional] |
 
 ### Return type
 

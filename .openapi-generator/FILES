@@ -153,6 +153,7 @@ docs/WebhookDeliveryResponseDto.md
 docs/WebhookDisputePayload.md
 docs/WebhookEndpointApi.md
 docs/WebhookEndpointResponseDto.md
+docs/WebhookEntitlementGrantPayload.md
 docs/WebhookLicensePayload.md
 docs/WebhookPaymentPayload.md
 docs/WebhookPaymentPayloadBillingAddress.md
@@ -333,6 +334,7 @@ src/main/kotlin/com/solifyn/model/UpdateWebhookEndpointDto.kt
 src/main/kotlin/com/solifyn/model/WebhookDeliveryResponseDto.kt
 src/main/kotlin/com/solifyn/model/WebhookDisputePayload.kt
 src/main/kotlin/com/solifyn/model/WebhookEndpointResponseDto.kt
+src/main/kotlin/com/solifyn/model/WebhookEntitlementGrantPayload.kt
 src/main/kotlin/com/solifyn/model/WebhookLicensePayload.kt
 src/main/kotlin/com/solifyn/model/WebhookPaymentPayload.kt
 src/main/kotlin/com/solifyn/model/WebhookPaymentPayloadBillingAddress.kt

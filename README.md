@@ -309,6 +309,7 @@ All URIs are relative to *https://api.solifyn.com*
  - [com.solifyn.model.WebhookDeliveryResponseDto](docs/WebhookDeliveryResponseDto.md)
  - [com.solifyn.model.WebhookDisputePayload](docs/WebhookDisputePayload.md)
  - [com.solifyn.model.WebhookEndpointResponseDto](docs/WebhookEndpointResponseDto.md)
+ - [com.solifyn.model.WebhookEntitlementGrantPayload](docs/WebhookEntitlementGrantPayload.md)
  - [com.solifyn.model.WebhookLicensePayload](docs/WebhookLicensePayload.md)
  - [com.solifyn.model.WebhookPaymentPayload](docs/WebhookPaymentPayload.md)
  - [com.solifyn.model.WebhookPaymentPayloadBillingAddress](docs/WebhookPaymentPayloadBillingAddress.md)
