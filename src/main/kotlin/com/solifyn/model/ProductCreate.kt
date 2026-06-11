@@ -39,6 +39,8 @@ import com.squareup.moshi.JsonClass
  * @param hasDiscordAccess Whether the purchase includes Discord server role access.
  * @param discordGuildId Discord Guild (Server) ID to grant access to.
  * @param discordRoleId Discord Role ID to assign to the user.
+ * @param hasFramerAccess Whether the purchase includes Framer Template access.
+ * @param framerTemplateId Framer Template ID to grant access to.
  * @param isTaxInclusive Whether tax is included in the base price.
  * @param activationLimit Maximum concurrent activated instances allowed per license key.
  * @param brandId Brand id for the product, if not provided will default to primary brand.
@@ -118,6 +120,14 @@ data class ProductCreate (
     /* Discord Role ID to assign to the user. */
     @Json(name = "discordRoleId")
     val discordRoleId: kotlin.String? = null,
+
+    /* Whether the purchase includes Framer Template access. */
+    @Json(name = "hasFramerAccess")
+    val hasFramerAccess: kotlin.Boolean? = false,
+
+    /* Framer Template ID to grant access to. */
+    @Json(name = "framerTemplateId")
+    val framerTemplateId: kotlin.String? = null,
 
     /* Whether tax is included in the base price. */
     @Json(name = "isTaxInclusive")

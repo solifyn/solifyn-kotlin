@@ -19,6 +19,8 @@
 | **hasDiscordAccess** | **kotlin.Boolean** | Whether the purchase includes Discord server role access. |  [optional] |
 | **discordGuildId** | **kotlin.String** | Discord Guild (Server) ID to grant access to. |  [optional] |
 | **discordRoleId** | **kotlin.String** | Discord Role ID to assign to the user. |  [optional] |
+| **hasFramerAccess** | **kotlin.Boolean** | Whether the purchase includes Framer Template access. |  [optional] |
+| **framerTemplateId** | **kotlin.String** | Framer Template ID to grant access to. |  [optional] |
 | **isTaxInclusive** | **kotlin.Boolean** | Whether tax is included in the base price. |  [optional] |
 | **activationLimit** | **kotlin.Int** | Maximum concurrent activated instances allowed per license key. |  [optional] |
 | **brandId** | **kotlin.String** | Brand id for the product, if not provided will default to primary brand. |  [optional] |
