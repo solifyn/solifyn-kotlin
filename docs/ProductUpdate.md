@@ -33,6 +33,7 @@
 | **isListed** | **kotlin.Boolean** | Whether the product is publicly visible. |  [optional] |
 | **isFree** | **kotlin.Boolean** | Whether the product is free of charge. |  [optional] |
 | **addons** | [**kotlin.collections.List&lt;ProductCreateAddonsInner&gt;**](ProductCreateAddonsInner.md) | Product addons configurations. |  [optional] |
+| **entitlementIds** | **kotlin.collections.List&lt;kotlin.String&gt;** | Array of independent entitlement IDs to link to this product. |  [optional] |
 
 
 <a id="Currency"></a>

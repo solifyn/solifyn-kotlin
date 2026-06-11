@@ -19,7 +19,9 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import com.solifyn.model.EntitlementGrantResponseDto
+import com.solifyn.model.CreateFramerTemplateDto
+import com.solifyn.model.FramerTemplateResponseDto
+import com.solifyn.model.UpdateFramerTemplateDto
 
 import com.squareup.moshi.Json
 
@@ -37,7 +39,7 @@ import com.solifyn.infrastructure.ResponseType
 import com.solifyn.infrastructure.Success
 import com.solifyn.infrastructure.toMultiValue
 
-class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class FramerIntegrationApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -46,10 +48,10 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * Retrieve Entitlement Grant
-     * Retrieve details of a specific entitlement grant.
-     * @param id The unique grant ID
-     * @return EntitlementGrantResponseDto
+     * Create Framer Template
+     * Registers a new Framer template with its public remix link for the active business.
+     * @param createFramerTemplateDto 
+     * @return FramerTemplateResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -58,11 +60,11 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun entitlementGrantsGet(id: kotlin.String) : EntitlementGrantResponseDto {
-        val localVarResponse = entitlementGrantsGetWithHttpInfo(id = id)
+    fun framerCreateTemplate(createFramerTemplateDto: CreateFramerTemplateDto) : FramerTemplateResponseDto {
+        val localVarResponse = framerCreateTemplateWithHttpInfo(createFramerTemplateDto = createFramerTemplateDto)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementGrantResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as FramerTemplateResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -77,30 +79,170 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * Retrieve Entitlement Grant
-     * Retrieve details of a specific entitlement grant.
-     * @param id The unique grant ID
-     * @return ApiResponse<EntitlementGrantResponseDto?>
+     * Create Framer Template
+     * Registers a new Framer template with its public remix link for the active business.
+     * @param createFramerTemplateDto 
+     * @return ApiResponse<FramerTemplateResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun entitlementGrantsGetWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementGrantResponseDto?> {
-        val localVariableConfig = entitlementGrantsGetRequestConfig(id = id)
+    fun framerCreateTemplateWithHttpInfo(createFramerTemplateDto: CreateFramerTemplateDto) : ApiResponse<FramerTemplateResponseDto?> {
+        val localVariableConfig = framerCreateTemplateRequestConfig(createFramerTemplateDto = createFramerTemplateDto)
 
-        return request<Unit, EntitlementGrantResponseDto>(
+        return request<CreateFramerTemplateDto, FramerTemplateResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation entitlementGrantsGet
+     * To obtain the request config of the operation framerCreateTemplate
      *
-     * @param id The unique grant ID
+     * @param createFramerTemplateDto 
      * @return RequestConfig
      */
-    fun entitlementGrantsGetRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun framerCreateTemplateRequestConfig(createFramerTemplateDto: CreateFramerTemplateDto) : RequestConfig<CreateFramerTemplateDto> {
+        val localVariableBody = createFramerTemplateDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/v1/framer/templates",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Delete Framer Template
+     * Deletes a registered Framer template for the active business.
+     * @param id The Framer template ID
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun framerDeleteTemplate(id: kotlin.String) : Unit {
+        val localVarResponse = framerDeleteTemplateWithHttpInfo(id = id)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Delete Framer Template
+     * Deletes a registered Framer template for the active business.
+     * @param id The Framer template ID
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun framerDeleteTemplateWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+        val localVariableConfig = framerDeleteTemplateRequestConfig(id = id)
+
+        return request<Unit, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation framerDeleteTemplate
+     *
+     * @param id The Framer template ID
+     * @return RequestConfig
+     */
+    fun framerDeleteTemplateRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/v1/framer/templates/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Retrieve Framer Template
+     * Retrieves details of a specific registered Framer template.
+     * @param id The Framer template ID
+     * @return FramerTemplateResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun framerGetTemplate(id: kotlin.String) : FramerTemplateResponseDto {
+        val localVarResponse = framerGetTemplateWithHttpInfo(id = id)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as FramerTemplateResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Retrieve Framer Template
+     * Retrieves details of a specific registered Framer template.
+     * @param id The Framer template ID
+     * @return ApiResponse<FramerTemplateResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun framerGetTemplateWithHttpInfo(id: kotlin.String) : ApiResponse<FramerTemplateResponseDto?> {
+        val localVariableConfig = framerGetTemplateRequestConfig(id = id)
+
+        return request<Unit, FramerTemplateResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation framerGetTemplate
+     *
+     * @param id The Framer template ID
+     * @return RequestConfig
+     */
+    fun framerGetTemplateRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -108,7 +250,7 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/v1/entitlement-grants/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            path = "/v1/framer/templates/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -117,12 +259,9 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * List Entitlement Grants
-     * Retrieve all GitHub repository entitlement grants for the active business.
-     * @param status Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
-     * @param entitlementId Filter by entitlement config ID (optional)
-     * @param productId Filter by product ID (optional)
-     * @return kotlin.collections.List<EntitlementGrantResponseDto>
+     * List Framer Templates
+     * Retrieves all registered Framer templates for the active business.
+     * @return kotlin.collections.List<FramerTemplateResponseDto>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -131,11 +270,11 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun entitlementGrantsList(status: kotlin.String? = null, entitlementId: kotlin.String? = null, productId: kotlin.String? = null) : kotlin.collections.List<EntitlementGrantResponseDto> {
-        val localVarResponse = entitlementGrantsListWithHttpInfo(status = status, entitlementId = entitlementId, productId = productId)
+    fun framerListTemplates() : kotlin.collections.List<FramerTemplateResponseDto> {
+        val localVarResponse = framerListTemplatesWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<EntitlementGrantResponseDto>
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<FramerTemplateResponseDto>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -150,53 +289,36 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * List Entitlement Grants
-     * Retrieve all GitHub repository entitlement grants for the active business.
-     * @param status Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
-     * @param entitlementId Filter by entitlement config ID (optional)
-     * @param productId Filter by product ID (optional)
-     * @return ApiResponse<kotlin.collections.List<EntitlementGrantResponseDto>?>
+     * List Framer Templates
+     * Retrieves all registered Framer templates for the active business.
+     * @return ApiResponse<kotlin.collections.List<FramerTemplateResponseDto>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun entitlementGrantsListWithHttpInfo(status: kotlin.String?, entitlementId: kotlin.String?, productId: kotlin.String?) : ApiResponse<kotlin.collections.List<EntitlementGrantResponseDto>?> {
-        val localVariableConfig = entitlementGrantsListRequestConfig(status = status, entitlementId = entitlementId, productId = productId)
+    fun framerListTemplatesWithHttpInfo() : ApiResponse<kotlin.collections.List<FramerTemplateResponseDto>?> {
+        val localVariableConfig = framerListTemplatesRequestConfig()
 
-        return request<Unit, kotlin.collections.List<EntitlementGrantResponseDto>>(
+        return request<Unit, kotlin.collections.List<FramerTemplateResponseDto>>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation entitlementGrantsList
+     * To obtain the request config of the operation framerListTemplates
      *
-     * @param status Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
-     * @param entitlementId Filter by entitlement config ID (optional)
-     * @param productId Filter by product ID (optional)
      * @return RequestConfig
      */
-    fun entitlementGrantsListRequestConfig(status: kotlin.String?, entitlementId: kotlin.String?, productId: kotlin.String?) : RequestConfig<Unit> {
+    fun framerListTemplatesRequestConfig() : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
-            .apply {
-                if (status != null) {
-                    put("status", listOf(status.toString()))
-                }
-                if (entitlementId != null) {
-                    put("entitlementId", listOf(entitlementId.toString()))
-                }
-                if (productId != null) {
-                    put("productId", listOf(productId.toString()))
-                }
-            }
+        val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/v1/entitlement-grants",
+            path = "/v1/framer/templates",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -205,10 +327,11 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * Retry Entitlement Grant Delivery
-     * Attempts to re-invite the collaborator if GitHub username is already connected, or resets the OAuth URL redirect.
-     * @param id The unique grant ID
-     * @return EntitlementGrantResponseDto
+     * Update Framer Template
+     * Updates a registered Framer template for the active business.
+     * @param id The Framer template ID
+     * @param updateFramerTemplateDto 
+     * @return FramerTemplateResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -217,11 +340,11 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun entitlementGrantsRetry(id: kotlin.String) : EntitlementGrantResponseDto {
-        val localVarResponse = entitlementGrantsRetryWithHttpInfo(id = id)
+    fun framerUpdateTemplate(id: kotlin.String, updateFramerTemplateDto: UpdateFramerTemplateDto) : FramerTemplateResponseDto {
+        val localVarResponse = framerUpdateTemplateWithHttpInfo(id = id, updateFramerTemplateDto = updateFramerTemplateDto)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementGrantResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as FramerTemplateResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -236,109 +359,41 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * Retry Entitlement Grant Delivery
-     * Attempts to re-invite the collaborator if GitHub username is already connected, or resets the OAuth URL redirect.
-     * @param id The unique grant ID
-     * @return ApiResponse<EntitlementGrantResponseDto?>
+     * Update Framer Template
+     * Updates a registered Framer template for the active business.
+     * @param id The Framer template ID
+     * @param updateFramerTemplateDto 
+     * @return ApiResponse<FramerTemplateResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun entitlementGrantsRetryWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementGrantResponseDto?> {
-        val localVariableConfig = entitlementGrantsRetryRequestConfig(id = id)
+    fun framerUpdateTemplateWithHttpInfo(id: kotlin.String, updateFramerTemplateDto: UpdateFramerTemplateDto) : ApiResponse<FramerTemplateResponseDto?> {
+        val localVariableConfig = framerUpdateTemplateRequestConfig(id = id, updateFramerTemplateDto = updateFramerTemplateDto)
 
-        return request<Unit, EntitlementGrantResponseDto>(
+        return request<UpdateFramerTemplateDto, FramerTemplateResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation entitlementGrantsRetry
+     * To obtain the request config of the operation framerUpdateTemplate
      *
-     * @param id The unique grant ID
+     * @param id The Framer template ID
+     * @param updateFramerTemplateDto 
      * @return RequestConfig
      */
-    fun entitlementGrantsRetryRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
+    fun framerUpdateTemplateRequestConfig(id: kotlin.String, updateFramerTemplateDto: UpdateFramerTemplateDto) : RequestConfig<UpdateFramerTemplateDto> {
+        val localVariableBody = updateFramerTemplateDto
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/v1/entitlement-grants/{id}/retry".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * Manually Revoke Entitlement Grant
-     * Manually remove the customer collaborator access from the repository and revoke the grant.
-     * @param id The unique grant ID
-     * @return EntitlementGrantResponseDto
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun entitlementGrantsRevoke(id: kotlin.String) : EntitlementGrantResponseDto {
-        val localVarResponse = entitlementGrantsRevokeWithHttpInfo(id = id)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementGrantResponseDto
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * Manually Revoke Entitlement Grant
-     * Manually remove the customer collaborator access from the repository and revoke the grant.
-     * @param id The unique grant ID
-     * @return ApiResponse<EntitlementGrantResponseDto?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun entitlementGrantsRevokeWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementGrantResponseDto?> {
-        val localVariableConfig = entitlementGrantsRevokeRequestConfig(id = id)
-
-        return request<Unit, EntitlementGrantResponseDto>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation entitlementGrantsRevoke
-     *
-     * @param id The unique grant ID
-     * @return RequestConfig
-     */
-    fun entitlementGrantsRevokeRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/v1/entitlement-grants/{id}/revoke".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            method = RequestMethod.PUT,
+            path = "/v1/framer/templates/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

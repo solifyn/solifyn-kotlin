@@ -33,6 +33,8 @@ docs/CreateCheckoutLinkDto.md
 docs/CreateCollectionCheckoutDto.md
 docs/CreateCollectionDto.md
 docs/CreateCustomerDto.md
+docs/CreateEntitlementDto.md
+docs/CreateFramerTemplateDto.md
 docs/CreateMeterDto.md
 docs/CreateSetupCheckoutDto.md
 docs/CreateWebhookEndpointDto.md
@@ -61,8 +63,12 @@ docs/DisputeFileUpload.md
 docs/DisputeList.md
 docs/DisputeListMetaDto.md
 docs/DisputesApi.md
+docs/EntitlementDetailResponseDto.md
 docs/EntitlementGrantResponseDto.md
 docs/EntitlementGrantsApi.md
+docs/EntitlementsApi.md
+docs/FramerIntegrationApi.md
+docs/FramerTemplateResponseDto.md
 docs/GitHubIntegrationApi.md
 docs/GithubReposResponseDto.md
 docs/Instance.md
@@ -80,6 +86,7 @@ docs/LicensesDeactivateRequest.md
 docs/LicensesUpdateInstancePostRequest.md
 docs/LicensesUpdateRequest.md
 docs/LicensesVerifyRequest.md
+docs/LinkedProductDto.md
 docs/MeterDetailResponseDto.md
 docs/MeterEventsResponseDto.md
 docs/MeterIngestEventDto.md
@@ -147,6 +154,8 @@ docs/UpdateCheckoutLinkDto.md
 docs/UpdateCollectionDto.md
 docs/UpdateCollectionProductDto.md
 docs/UpdateCustomerDto.md
+docs/UpdateEntitlementDto.md
+docs/UpdateFramerTemplateDto.md
 docs/UpdateInstanceDto.md
 docs/UpdateMeterDto.md
 docs/UpdateWebhookEndpointDto.md
@@ -178,6 +187,8 @@ src/main/kotlin/com/solifyn/api/DiscordIntegrationApi.kt
 src/main/kotlin/com/solifyn/api/DiscountsApi.kt
 src/main/kotlin/com/solifyn/api/DisputesApi.kt
 src/main/kotlin/com/solifyn/api/EntitlementGrantsApi.kt
+src/main/kotlin/com/solifyn/api/EntitlementsApi.kt
+src/main/kotlin/com/solifyn/api/FramerIntegrationApi.kt
 src/main/kotlin/com/solifyn/api/GitHubIntegrationApi.kt
 src/main/kotlin/com/solifyn/api/LicenseApi.kt
 src/main/kotlin/com/solifyn/api/LicenseKeysApi.kt
@@ -237,6 +248,8 @@ src/main/kotlin/com/solifyn/model/CreateCheckoutLinkDto.kt
 src/main/kotlin/com/solifyn/model/CreateCollectionCheckoutDto.kt
 src/main/kotlin/com/solifyn/model/CreateCollectionDto.kt
 src/main/kotlin/com/solifyn/model/CreateCustomerDto.kt
+src/main/kotlin/com/solifyn/model/CreateEntitlementDto.kt
+src/main/kotlin/com/solifyn/model/CreateFramerTemplateDto.kt
 src/main/kotlin/com/solifyn/model/CreateMeterDto.kt
 src/main/kotlin/com/solifyn/model/CreateSetupCheckoutDto.kt
 src/main/kotlin/com/solifyn/model/CreateWebhookEndpointDto.kt
@@ -258,7 +271,9 @@ src/main/kotlin/com/solifyn/model/DisputeEvidenceUpdate.kt
 src/main/kotlin/com/solifyn/model/DisputeFileUpload.kt
 src/main/kotlin/com/solifyn/model/DisputeList.kt
 src/main/kotlin/com/solifyn/model/DisputeListMetaDto.kt
+src/main/kotlin/com/solifyn/model/EntitlementDetailResponseDto.kt
 src/main/kotlin/com/solifyn/model/EntitlementGrantResponseDto.kt
+src/main/kotlin/com/solifyn/model/FramerTemplateResponseDto.kt
 src/main/kotlin/com/solifyn/model/GithubReposResponseDto.kt
 src/main/kotlin/com/solifyn/model/Instance.kt
 src/main/kotlin/com/solifyn/model/Invoice.kt
@@ -272,6 +287,7 @@ src/main/kotlin/com/solifyn/model/LicensesDeactivateRequest.kt
 src/main/kotlin/com/solifyn/model/LicensesUpdateInstancePostRequest.kt
 src/main/kotlin/com/solifyn/model/LicensesUpdateRequest.kt
 src/main/kotlin/com/solifyn/model/LicensesVerifyRequest.kt
+src/main/kotlin/com/solifyn/model/LinkedProductDto.kt
 src/main/kotlin/com/solifyn/model/MeterDetailResponseDto.kt
 src/main/kotlin/com/solifyn/model/MeterEventsResponseDto.kt
 src/main/kotlin/com/solifyn/model/MeterIngestEventDto.kt
@@ -332,6 +348,8 @@ src/main/kotlin/com/solifyn/model/UpdateCheckoutLinkDto.kt
 src/main/kotlin/com/solifyn/model/UpdateCollectionDto.kt
 src/main/kotlin/com/solifyn/model/UpdateCollectionProductDto.kt
 src/main/kotlin/com/solifyn/model/UpdateCustomerDto.kt
+src/main/kotlin/com/solifyn/model/UpdateEntitlementDto.kt
+src/main/kotlin/com/solifyn/model/UpdateFramerTemplateDto.kt
 src/main/kotlin/com/solifyn/model/UpdateInstanceDto.kt
 src/main/kotlin/com/solifyn/model/UpdateMeterDto.kt
 src/main/kotlin/com/solifyn/model/UpdateWebhookEndpointDto.kt

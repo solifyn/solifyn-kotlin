@@ -20,6 +20,8 @@
 | **discordRoleId** | **kotlin.String** | Target Discord Role ID if type is DISCORD. |  [optional] |
 | **discordUsername** | **kotlin.String** | The connected customer Discord username. |  [optional] |
 | **discordUserId** | **kotlin.String** | The connected customer Discord user ID. |  [optional] |
+| **framerTemplateId** | [**java.util.UUID**](java.util.UUID.md) | The Framer template ID if type is FRAMER. |  [optional] |
+| **framerRemixLink** | **kotlin.String** | The single-use remix link generated for the customer if type is FRAMER. |  [optional] |
 | **oauthUrl** | **kotlin.String** | OAuth URL to redirect the customer to. |  [optional] |
 | **errorDetails** | **kotlin.String** | Error message if invitation delivery failed. |  [optional] |
 | **metadata** | [**kotlin.Any**](.md) | Platform-specific metadata. |  [optional] |

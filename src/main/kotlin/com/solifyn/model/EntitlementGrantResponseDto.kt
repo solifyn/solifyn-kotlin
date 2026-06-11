@@ -38,6 +38,8 @@ import com.squareup.moshi.JsonClass
  * @param discordRoleId Target Discord Role ID if type is DISCORD.
  * @param discordUsername The connected customer Discord username.
  * @param discordUserId The connected customer Discord user ID.
+ * @param framerTemplateId The Framer template ID if type is FRAMER.
+ * @param framerRemixLink The single-use remix link generated for the customer if type is FRAMER.
  * @param oauthUrl OAuth URL to redirect the customer to.
  * @param errorDetails Error message if invitation delivery failed.
  * @param metadata Platform-specific metadata.
@@ -109,6 +111,14 @@ data class EntitlementGrantResponseDto (
     /* The connected customer Discord user ID. */
     @Json(name = "discordUserId")
     val discordUserId: kotlin.String? = null,
+
+    /* The Framer template ID if type is FRAMER. */
+    @Json(name = "framerTemplateId")
+    val framerTemplateId: java.util.UUID? = null,
+
+    /* The single-use remix link generated for the customer if type is FRAMER. */
+    @Json(name = "framerRemixLink")
+    val framerRemixLink: kotlin.String? = null,
 
     /* OAuth URL to redirect the customer to. */
     @Json(name = "oauthUrl")

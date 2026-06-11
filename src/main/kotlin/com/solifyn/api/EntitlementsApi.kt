@@ -19,7 +19,9 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import com.solifyn.model.EntitlementGrantResponseDto
+import com.solifyn.model.CreateEntitlementDto
+import com.solifyn.model.EntitlementDetailResponseDto
+import com.solifyn.model.UpdateEntitlementDto
 
 import com.squareup.moshi.Json
 
@@ -37,7 +39,7 @@ import com.solifyn.infrastructure.ResponseType
 import com.solifyn.infrastructure.Success
 import com.solifyn.infrastructure.toMultiValue
 
-class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+class EntitlementsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -46,10 +48,10 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * Retrieve Entitlement Grant
-     * Retrieve details of a specific entitlement grant.
-     * @param id The unique grant ID
-     * @return EntitlementGrantResponseDto
+     * Create Entitlement
+     * Create a new independent access entitlement.
+     * @param createEntitlementDto 
+     * @return EntitlementDetailResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -58,11 +60,11 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun entitlementGrantsGet(id: kotlin.String) : EntitlementGrantResponseDto {
-        val localVarResponse = entitlementGrantsGetWithHttpInfo(id = id)
+    fun entitlementsCreate(createEntitlementDto: CreateEntitlementDto) : EntitlementDetailResponseDto {
+        val localVarResponse = entitlementsCreateWithHttpInfo(createEntitlementDto = createEntitlementDto)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementGrantResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementDetailResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -77,30 +79,173 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * Retrieve Entitlement Grant
-     * Retrieve details of a specific entitlement grant.
-     * @param id The unique grant ID
-     * @return ApiResponse<EntitlementGrantResponseDto?>
+     * Create Entitlement
+     * Create a new independent access entitlement.
+     * @param createEntitlementDto 
+     * @return ApiResponse<EntitlementDetailResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun entitlementGrantsGetWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementGrantResponseDto?> {
-        val localVariableConfig = entitlementGrantsGetRequestConfig(id = id)
+    fun entitlementsCreateWithHttpInfo(createEntitlementDto: CreateEntitlementDto) : ApiResponse<EntitlementDetailResponseDto?> {
+        val localVariableConfig = entitlementsCreateRequestConfig(createEntitlementDto = createEntitlementDto)
 
-        return request<Unit, EntitlementGrantResponseDto>(
+        return request<CreateEntitlementDto, EntitlementDetailResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation entitlementGrantsGet
+     * To obtain the request config of the operation entitlementsCreate
      *
-     * @param id The unique grant ID
+     * @param createEntitlementDto 
      * @return RequestConfig
      */
-    fun entitlementGrantsGetRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+    fun entitlementsCreateRequestConfig(createEntitlementDto: CreateEntitlementDto) : RequestConfig<CreateEntitlementDto> {
+        val localVariableBody = createEntitlementDto
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/v1/entitlements",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Delete Entitlement
+     * Delete an independent entitlement and unlink all mapped products.
+     * @param id The unique entitlement ID.
+     * @return EntitlementDetailResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun entitlementsDelete(id: kotlin.String) : EntitlementDetailResponseDto {
+        val localVarResponse = entitlementsDeleteWithHttpInfo(id = id)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementDetailResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Delete Entitlement
+     * Delete an independent entitlement and unlink all mapped products.
+     * @param id The unique entitlement ID.
+     * @return ApiResponse<EntitlementDetailResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun entitlementsDeleteWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementDetailResponseDto?> {
+        val localVariableConfig = entitlementsDeleteRequestConfig(id = id)
+
+        return request<Unit, EntitlementDetailResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation entitlementsDelete
+     *
+     * @param id The unique entitlement ID.
+     * @return RequestConfig
+     */
+    fun entitlementsDeleteRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/v1/entitlements/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * Retrieve Entitlement
+     * Retrieve a specific entitlement definition by ID.
+     * @param id The unique entitlement ID.
+     * @return EntitlementDetailResponseDto
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun entitlementsGet(id: kotlin.String) : EntitlementDetailResponseDto {
+        val localVarResponse = entitlementsGetWithHttpInfo(id = id)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementDetailResponseDto
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * Retrieve Entitlement
+     * Retrieve a specific entitlement definition by ID.
+     * @param id The unique entitlement ID.
+     * @return ApiResponse<EntitlementDetailResponseDto?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun entitlementsGetWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementDetailResponseDto?> {
+        val localVariableConfig = entitlementsGetRequestConfig(id = id)
+
+        return request<Unit, EntitlementDetailResponseDto>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation entitlementsGet
+     *
+     * @param id The unique entitlement ID.
+     * @return RequestConfig
+     */
+    fun entitlementsGetRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -108,21 +253,18 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/v1/entitlement-grants/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            path = "/v1/entitlements/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = true,
+            requiresAuthentication = false,
             body = localVariableBody
         )
     }
 
     /**
-     * List Entitlement Grants
-     * Retrieve all GitHub repository entitlement grants for the active business.
-     * @param status Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
-     * @param entitlementId Filter by entitlement config ID (optional)
-     * @param productId Filter by product ID (optional)
-     * @return kotlin.collections.List<EntitlementGrantResponseDto>
+     * List Entitlements
+     * List all independent entitlements for the active business.
+     * @return kotlin.collections.List<EntitlementDetailResponseDto>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -131,11 +273,11 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun entitlementGrantsList(status: kotlin.String? = null, entitlementId: kotlin.String? = null, productId: kotlin.String? = null) : kotlin.collections.List<EntitlementGrantResponseDto> {
-        val localVarResponse = entitlementGrantsListWithHttpInfo(status = status, entitlementId = entitlementId, productId = productId)
+    fun entitlementsList() : kotlin.collections.List<EntitlementDetailResponseDto> {
+        val localVarResponse = entitlementsListWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<EntitlementGrantResponseDto>
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<EntitlementDetailResponseDto>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -150,65 +292,49 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * List Entitlement Grants
-     * Retrieve all GitHub repository entitlement grants for the active business.
-     * @param status Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
-     * @param entitlementId Filter by entitlement config ID (optional)
-     * @param productId Filter by product ID (optional)
-     * @return ApiResponse<kotlin.collections.List<EntitlementGrantResponseDto>?>
+     * List Entitlements
+     * List all independent entitlements for the active business.
+     * @return ApiResponse<kotlin.collections.List<EntitlementDetailResponseDto>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun entitlementGrantsListWithHttpInfo(status: kotlin.String?, entitlementId: kotlin.String?, productId: kotlin.String?) : ApiResponse<kotlin.collections.List<EntitlementGrantResponseDto>?> {
-        val localVariableConfig = entitlementGrantsListRequestConfig(status = status, entitlementId = entitlementId, productId = productId)
+    fun entitlementsListWithHttpInfo() : ApiResponse<kotlin.collections.List<EntitlementDetailResponseDto>?> {
+        val localVariableConfig = entitlementsListRequestConfig()
 
-        return request<Unit, kotlin.collections.List<EntitlementGrantResponseDto>>(
+        return request<Unit, kotlin.collections.List<EntitlementDetailResponseDto>>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation entitlementGrantsList
+     * To obtain the request config of the operation entitlementsList
      *
-     * @param status Filter by status (PENDING, DELIVERED, FAILED, REVOKED) (optional)
-     * @param entitlementId Filter by entitlement config ID (optional)
-     * @param productId Filter by product ID (optional)
      * @return RequestConfig
      */
-    fun entitlementGrantsListRequestConfig(status: kotlin.String?, entitlementId: kotlin.String?, productId: kotlin.String?) : RequestConfig<Unit> {
+    fun entitlementsListRequestConfig() : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
-            .apply {
-                if (status != null) {
-                    put("status", listOf(status.toString()))
-                }
-                if (entitlementId != null) {
-                    put("entitlementId", listOf(entitlementId.toString()))
-                }
-                if (productId != null) {
-                    put("productId", listOf(productId.toString()))
-                }
-            }
+        val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/v1/entitlement-grants",
+            path = "/v1/entitlements",
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = true,
+            requiresAuthentication = false,
             body = localVariableBody
         )
     }
 
     /**
-     * Retry Entitlement Grant Delivery
-     * Attempts to re-invite the collaborator if GitHub username is already connected, or resets the OAuth URL redirect.
-     * @param id The unique grant ID
-     * @return EntitlementGrantResponseDto
+     * Update Entitlement
+     * Update details of an existing independent entitlement.
+     * @param id The unique entitlement ID.
+     * @param updateEntitlementDto 
+     * @return EntitlementDetailResponseDto
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -217,11 +343,11 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun entitlementGrantsRetry(id: kotlin.String) : EntitlementGrantResponseDto {
-        val localVarResponse = entitlementGrantsRetryWithHttpInfo(id = id)
+    fun entitlementsUpdate(id: kotlin.String, updateEntitlementDto: UpdateEntitlementDto) : EntitlementDetailResponseDto {
+        val localVarResponse = entitlementsUpdateWithHttpInfo(id = id, updateEntitlementDto = updateEntitlementDto)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementGrantResponseDto
+            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementDetailResponseDto
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -236,112 +362,44 @@ class EntitlementGrantsApi(basePath: kotlin.String = defaultBasePath, client: Ca
     }
 
     /**
-     * Retry Entitlement Grant Delivery
-     * Attempts to re-invite the collaborator if GitHub username is already connected, or resets the OAuth URL redirect.
-     * @param id The unique grant ID
-     * @return ApiResponse<EntitlementGrantResponseDto?>
+     * Update Entitlement
+     * Update details of an existing independent entitlement.
+     * @param id The unique entitlement ID.
+     * @param updateEntitlementDto 
+     * @return ApiResponse<EntitlementDetailResponseDto?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun entitlementGrantsRetryWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementGrantResponseDto?> {
-        val localVariableConfig = entitlementGrantsRetryRequestConfig(id = id)
+    fun entitlementsUpdateWithHttpInfo(id: kotlin.String, updateEntitlementDto: UpdateEntitlementDto) : ApiResponse<EntitlementDetailResponseDto?> {
+        val localVariableConfig = entitlementsUpdateRequestConfig(id = id, updateEntitlementDto = updateEntitlementDto)
 
-        return request<Unit, EntitlementGrantResponseDto>(
+        return request<UpdateEntitlementDto, EntitlementDetailResponseDto>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation entitlementGrantsRetry
+     * To obtain the request config of the operation entitlementsUpdate
      *
-     * @param id The unique grant ID
+     * @param id The unique entitlement ID.
+     * @param updateEntitlementDto 
      * @return RequestConfig
      */
-    fun entitlementGrantsRetryRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
+    fun entitlementsUpdateRequestConfig(id: kotlin.String, updateEntitlementDto: UpdateEntitlementDto) : RequestConfig<UpdateEntitlementDto> {
+        val localVariableBody = updateEntitlementDto
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/v1/entitlement-grants/{id}/retry".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
+            method = RequestMethod.PATCH,
+            path = "/v1/entitlements/{id}".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * Manually Revoke Entitlement Grant
-     * Manually remove the customer collaborator access from the repository and revoke the grant.
-     * @param id The unique grant ID
-     * @return EntitlementGrantResponseDto
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun entitlementGrantsRevoke(id: kotlin.String) : EntitlementGrantResponseDto {
-        val localVarResponse = entitlementGrantsRevokeWithHttpInfo(id = id)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as EntitlementGrantResponseDto
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * Manually Revoke Entitlement Grant
-     * Manually remove the customer collaborator access from the repository and revoke the grant.
-     * @param id The unique grant ID
-     * @return ApiResponse<EntitlementGrantResponseDto?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun entitlementGrantsRevokeWithHttpInfo(id: kotlin.String) : ApiResponse<EntitlementGrantResponseDto?> {
-        val localVariableConfig = entitlementGrantsRevokeRequestConfig(id = id)
-
-        return request<Unit, EntitlementGrantResponseDto>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation entitlementGrantsRevoke
-     *
-     * @param id The unique grant ID
-     * @return RequestConfig
-     */
-    fun entitlementGrantsRevokeRequestConfig(id: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/v1/entitlement-grants/{id}/revoke".replace("{"+"id"+"}", encodeURIComponent(id.toString())),
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
+            requiresAuthentication = false,
             body = localVariableBody
         )
     }

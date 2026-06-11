@@ -53,6 +53,7 @@ import com.squareup.moshi.JsonClass
  * @param isListed Whether the product is publicly visible.
  * @param isFree Whether the product is free of charge.
  * @param addons Product addons configurations.
+ * @param entitlementIds Array of independent entitlement IDs to link to this product.
  */
 
 
@@ -172,7 +173,11 @@ data class ProductUpdate (
 
     /* Product addons configurations. */
     @Json(name = "addons")
-    val addons: kotlin.collections.List<ProductCreateAddonsInner>? = null
+    val addons: kotlin.collections.List<ProductCreateAddonsInner>? = null,
+
+    /* Array of independent entitlement IDs to link to this product. */
+    @Json(name = "entitlementIds")
+    val entitlementIds: kotlin.collections.List<kotlin.String>? = null
 
 ) {
 

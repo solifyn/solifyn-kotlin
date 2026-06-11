@@ -60,7 +60,7 @@ Configure ApiKeyAuth:
 
 <a id="entitlementGrantsList"></a>
 # **entitlementGrantsList**
-> kotlin.collections.List&lt;EntitlementGrantResponseDto&gt; entitlementGrantsList(status)
+> kotlin.collections.List&lt;EntitlementGrantResponseDto&gt; entitlementGrantsList(status, entitlementId, productId)
 
 List Entitlement Grants
 
@@ -74,8 +74,10 @@ Retrieve all GitHub repository entitlement grants for the active business.
 
 val apiInstance = EntitlementGrantsApi()
 val status : kotlin.String = status_example // kotlin.String | Filter by status (PENDING, DELIVERED, FAILED, REVOKED)
+val entitlementId : kotlin.String = entitlementId_example // kotlin.String | Filter by entitlement config ID
+val productId : kotlin.String = productId_example // kotlin.String | Filter by product ID
 try {
-    val result : kotlin.collections.List<EntitlementGrantResponseDto> = apiInstance.entitlementGrantsList(status)
+    val result : kotlin.collections.List<EntitlementGrantResponseDto> = apiInstance.entitlementGrantsList(status, entitlementId, productId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling EntitlementGrantsApi#entitlementGrantsList")
@@ -87,9 +89,11 @@ try {
 ```
 
 ### Parameters
+| **status** | **kotlin.String**| Filter by status (PENDING, DELIVERED, FAILED, REVOKED) | [optional] |
+| **entitlementId** | **kotlin.String**| Filter by entitlement config ID | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **status** | **kotlin.String**| Filter by status (PENDING, DELIVERED, FAILED, REVOKED) | [optional] |
+| **productId** | **kotlin.String**| Filter by product ID | [optional] |
 
 ### Return type
 

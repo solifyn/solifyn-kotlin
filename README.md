@@ -105,6 +105,16 @@ All URIs are relative to *https://api.solifyn.com*
 | *EntitlementGrantsApi* | [**entitlementGrantsList**](docs/EntitlementGrantsApi.md#entitlementgrantslist) | **GET** /v1/entitlement-grants | List Entitlement Grants |
 | *EntitlementGrantsApi* | [**entitlementGrantsRetry**](docs/EntitlementGrantsApi.md#entitlementgrantsretry) | **POST** /v1/entitlement-grants/{id}/retry | Retry Entitlement Grant Delivery |
 | *EntitlementGrantsApi* | [**entitlementGrantsRevoke**](docs/EntitlementGrantsApi.md#entitlementgrantsrevoke) | **POST** /v1/entitlement-grants/{id}/revoke | Manually Revoke Entitlement Grant |
+| *EntitlementsApi* | [**entitlementsCreate**](docs/EntitlementsApi.md#entitlementscreate) | **POST** /v1/entitlements | Create Entitlement |
+| *EntitlementsApi* | [**entitlementsDelete**](docs/EntitlementsApi.md#entitlementsdelete) | **DELETE** /v1/entitlements/{id} | Delete Entitlement |
+| *EntitlementsApi* | [**entitlementsGet**](docs/EntitlementsApi.md#entitlementsget) | **GET** /v1/entitlements/{id} | Retrieve Entitlement |
+| *EntitlementsApi* | [**entitlementsList**](docs/EntitlementsApi.md#entitlementslist) | **GET** /v1/entitlements | List Entitlements |
+| *EntitlementsApi* | [**entitlementsUpdate**](docs/EntitlementsApi.md#entitlementsupdate) | **PATCH** /v1/entitlements/{id} | Update Entitlement |
+| *FramerIntegrationApi* | [**framerCreateTemplate**](docs/FramerIntegrationApi.md#framercreatetemplate) | **POST** /v1/framer/templates | Create Framer Template |
+| *FramerIntegrationApi* | [**framerDeleteTemplate**](docs/FramerIntegrationApi.md#framerdeletetemplate) | **DELETE** /v1/framer/templates/{id} | Delete Framer Template |
+| *FramerIntegrationApi* | [**framerGetTemplate**](docs/FramerIntegrationApi.md#framergettemplate) | **GET** /v1/framer/templates/{id} | Retrieve Framer Template |
+| *FramerIntegrationApi* | [**framerListTemplates**](docs/FramerIntegrationApi.md#framerlisttemplates) | **GET** /v1/framer/templates | List Framer Templates |
+| *FramerIntegrationApi* | [**framerUpdateTemplate**](docs/FramerIntegrationApi.md#framerupdatetemplate) | **PUT** /v1/framer/templates/{id} | Update Framer Template |
 | *GitHubIntegrationApi* | [**githubGetInstallUrl**](docs/GitHubIntegrationApi.md#githubgetinstallurl) | **GET** /v1/github/install | Get GitHub App Installation URL |
 | *GitHubIntegrationApi* | [**githubListRepos**](docs/GitHubIntegrationApi.md#githublistrepos) | **GET** /v1/github/repos | List Available GitHub Repositories |
 | *LicenseApi* | [**licensesCreate**](docs/LicenseApi.md#licensescreate) | **POST** /v1/licenses | Create License Key |
@@ -211,6 +221,8 @@ All URIs are relative to *https://api.solifyn.com*
  - [com.solifyn.model.CreateCollectionCheckoutDto](docs/CreateCollectionCheckoutDto.md)
  - [com.solifyn.model.CreateCollectionDto](docs/CreateCollectionDto.md)
  - [com.solifyn.model.CreateCustomerDto](docs/CreateCustomerDto.md)
+ - [com.solifyn.model.CreateEntitlementDto](docs/CreateEntitlementDto.md)
+ - [com.solifyn.model.CreateFramerTemplateDto](docs/CreateFramerTemplateDto.md)
  - [com.solifyn.model.CreateMeterDto](docs/CreateMeterDto.md)
  - [com.solifyn.model.CreateSetupCheckoutDto](docs/CreateSetupCheckoutDto.md)
  - [com.solifyn.model.CreateWebhookEndpointDto](docs/CreateWebhookEndpointDto.md)
@@ -232,7 +244,9 @@ All URIs are relative to *https://api.solifyn.com*
  - [com.solifyn.model.DisputeFileUpload](docs/DisputeFileUpload.md)
  - [com.solifyn.model.DisputeList](docs/DisputeList.md)
  - [com.solifyn.model.DisputeListMetaDto](docs/DisputeListMetaDto.md)
+ - [com.solifyn.model.EntitlementDetailResponseDto](docs/EntitlementDetailResponseDto.md)
  - [com.solifyn.model.EntitlementGrantResponseDto](docs/EntitlementGrantResponseDto.md)
+ - [com.solifyn.model.FramerTemplateResponseDto](docs/FramerTemplateResponseDto.md)
  - [com.solifyn.model.GithubReposResponseDto](docs/GithubReposResponseDto.md)
  - [com.solifyn.model.Instance](docs/Instance.md)
  - [com.solifyn.model.Invoice](docs/Invoice.md)
@@ -246,6 +260,7 @@ All URIs are relative to *https://api.solifyn.com*
  - [com.solifyn.model.LicensesUpdateInstancePostRequest](docs/LicensesUpdateInstancePostRequest.md)
  - [com.solifyn.model.LicensesUpdateRequest](docs/LicensesUpdateRequest.md)
  - [com.solifyn.model.LicensesVerifyRequest](docs/LicensesVerifyRequest.md)
+ - [com.solifyn.model.LinkedProductDto](docs/LinkedProductDto.md)
  - [com.solifyn.model.MeterDetailResponseDto](docs/MeterDetailResponseDto.md)
  - [com.solifyn.model.MeterEventsResponseDto](docs/MeterEventsResponseDto.md)
  - [com.solifyn.model.MeterIngestEventDto](docs/MeterIngestEventDto.md)
@@ -306,6 +321,8 @@ All URIs are relative to *https://api.solifyn.com*
  - [com.solifyn.model.UpdateCollectionDto](docs/UpdateCollectionDto.md)
  - [com.solifyn.model.UpdateCollectionProductDto](docs/UpdateCollectionProductDto.md)
  - [com.solifyn.model.UpdateCustomerDto](docs/UpdateCustomerDto.md)
+ - [com.solifyn.model.UpdateEntitlementDto](docs/UpdateEntitlementDto.md)
+ - [com.solifyn.model.UpdateFramerTemplateDto](docs/UpdateFramerTemplateDto.md)
  - [com.solifyn.model.UpdateInstanceDto](docs/UpdateInstanceDto.md)
  - [com.solifyn.model.UpdateMeterDto](docs/UpdateMeterDto.md)
  - [com.solifyn.model.UpdateWebhookEndpointDto](docs/UpdateWebhookEndpointDto.md)
